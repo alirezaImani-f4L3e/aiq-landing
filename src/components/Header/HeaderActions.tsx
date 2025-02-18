@@ -1,0 +1,27 @@
+import { Button } from "antd";
+import { createStyles } from "antd-style";
+import Link from "next/link";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
+import { Flexbox } from "react-layout-kit";
+
+const useStyles = createStyles(({ css }) => ({
+    actionsContainer: css`
+        z-index: 10;
+    `
+}))
+
+const HeaderActions = memo(() => {
+    const { t } = useTranslation("landing");
+    return (
+        <Flexbox horizontal gap={8} flex={'none'}>
+            <Link href={'https://chat.aiqueue.ir'}>
+                <Button type="primary" color="primary" variant="solid" shape="round" style={{ fontWeight: '500' }}>
+                    {t("getStarted")}
+                </Button>
+            </Link>
+        </Flexbox>
+    )
+});
+
+export default HeaderActions;

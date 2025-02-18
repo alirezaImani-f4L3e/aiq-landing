@@ -1,3 +1,9 @@
 export default {
-    loading: "درحال بارگذاری"
+    loading: "درحال بارگذاری",
+    header: {
+        tabs: {
+            features: "ویژگی ها",
+            pricing: "قیمت ها"
+        }
+    }
 }

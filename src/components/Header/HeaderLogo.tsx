@@ -8,7 +8,7 @@ const HeaderLogo = memo(() => {
     return (
         <Flexbox style={{ zIndex: 10 }} flex={'none'} horizontal>
             <Link href={'/'}>
-                <Image alt="AIQ" title="home" width={36} height={36} decoding="async" style={{ color: "transparent" }} src={AIQLogo} />
+                <Image alt="AIQ" title="home" width={36} height={36} decoding="async" style={{ color: "transparent", verticalAlign: 'middle', borderStyle: 'none' }} src={AIQLogo} />
             </Link>
         </Flexbox>
     )
