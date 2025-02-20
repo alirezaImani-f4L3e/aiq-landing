@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lobehub/icons": "^1.76.0",
     "@lobehub/ui": "^1.164.16",
     "antd": "^5.24.0",
     "antd-style": "^3.7.1",

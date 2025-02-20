@@ -3,6 +3,7 @@ import { createStyles } from "antd-style";
 import { memo } from "react";
 import { Flexbox } from "react-layout-kit";
 import { useMotionValueEvent, useScroll, useTransform, motion } from "motion/react";
+import { Video } from "@lobehub/ui";
 
 const useStyles = createStyles(({ css, token }) => ({
     videoContainer: css`
@@ -62,16 +63,7 @@ const Showcase = memo(() => {
                 <div style={{ borderRadius: 'calc(16px * 0.96)' }} className={styles.containerSecondChild}>
                     <Carousel arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={false}>
                         {slides.map((slide) => <Flexbox key={slide.id} align="center" justify="center" style={{ maxWidth: '1000px', position: 'relative', zIndex: 10 }}>
-                            <video
-                                muted
-                                playsInline
-                                preload="none"
-                                src={slide.videoUrl}
-                                style={{ width: "100%", display: 'inline-block' }}
-                                poster={slide.poster}
-                            >
-                            </video>
-
+                            <Video src={slide.videoUrl} poster={slide.poster} />
                         </Flexbox>)}
                     </Carousel>
                 </div>
