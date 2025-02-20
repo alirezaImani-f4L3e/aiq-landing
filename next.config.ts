@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
     }
   },
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "hub-apac-1.lobeobjects.space"
+      }
+    ]
+  },
   webpack(config) {
     config.experiments = {
       asyncWebAssembly: true,
