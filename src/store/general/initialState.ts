@@ -11,7 +11,7 @@ export type GeneralState = {
 }
 
 export const initialGeneralState: GeneralState = {
-    theme: 'dark',
+    theme: 'light',
     language: 'fa-IR',
     isMobile: false,
     neutralColor: undefined,
