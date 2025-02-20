@@ -1,10 +1,27 @@
+import { createStyles } from "antd-style";
 import { memo } from "react";
-import { Center } from "react-layout-kit";
+import { Center, Flexbox } from "react-layout-kit";
+import FeatureShowcase from "./FeatureShowcase";
+
+const useStyles = createStyles(({ css }) => ({
+    container: css`
+        position: relative;
+        width: 100%;
+    `,
+    innerContainer: css`
+        position: relative;
+        width: 100%;
+        padding-inline: 24px;
+    `
+}))
 
 const Features = memo(() => {
+    const { styles } = useStyles();
     return (
-        <Center>
-
+        <Center as={'section'} className={styles.container}>
+            <Flexbox className={styles.innerContainer} style={{ maxWidth: '1200px' }} gap={120} align="center" justify="center">
+                <FeatureShowcase />
+            </Flexbox>
         </Center>
     )
 })

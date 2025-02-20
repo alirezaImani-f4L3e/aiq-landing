@@ -11,22 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const useStyles = createStyles(({ css, token }) => ({
-    app: css`
-    position: relative;
-
-    overscroll-behavior: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    height: 100%;
-    min-height: 100dvh;
-    max-height: 100dvh;
-
-    @media (min-device-width: 576px) {
-      overflow: hidden;
-    }
-  `,
+    
     // scrollbar-width and scrollbar-color are supported from Chrome 121
     // https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color
     scrollbar: css`
@@ -91,7 +76,7 @@ const AppTheme = memo<AppThemeProps>(({
 
     return (
         <ThemeProvider
-            className={cx(styles.app, styles.scrollbar, styles.scrollbarPolyfill)}
+            className={cx(styles.scrollbar, styles.scrollbarPolyfill)}
             customTheme={{
                 neutralColor: neutralColor ?? defaultNeutralColor,
                 primaryColor: primaryColor ?? defaultPrimaryColor
