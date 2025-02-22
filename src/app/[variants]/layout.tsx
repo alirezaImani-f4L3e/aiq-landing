@@ -1,4 +1,5 @@
 import Analytics from "@/components/Analytics";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { DEFAULT_LANG } from "@/const/locale";
 import GlobalProvider from "@/layout/GlobalProvider";
@@ -27,6 +28,7 @@ const RootLayout = async ({ children, params }: RootLayoutProps) => {
                 <GlobalProvider locale={locale} appearance={theme} neutralColor={neutralColor} primaryColor={primaryColor}>
                     <Header />
                     {children}
+                    <Footer/>
                 </GlobalProvider>
                 <Analytics />
             </body>

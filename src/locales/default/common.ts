@@ -6,6 +6,16 @@ export default {
             pricing: "قیمت ها"
         }
     },
+    footer: {
+        slogan: "ارائه دهنده خدمات هوض مصنوعی",
+        features: "ویژگی ها",
+        newFeatures: "ویژگی های جدید",
+        pricing: "قیمت ها",
+        assistantsMarket: "فروشگاه دستیار ها",
+        pluginsMarket: "فروشگاه افزونه ها",
+        about: "درباره ما",
+        contactUs: "ارتباط با ما"
+    },
     features: {
         newFeature: "ویژگی جدید",
         knowledgeBase: "ویژگی پایگاه دانش اضافه شد - از این به بعد همه اطلاعات در اختیار شماست"

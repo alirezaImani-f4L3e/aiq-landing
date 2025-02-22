@@ -50,8 +50,8 @@ const slides = [
 const Showcase = memo(() => {
     const { styles } = useStyles();
     const { scrollY } = useScroll();
-    const rotate = useTransform(scrollY, [100, 500], [30, 0]);
-    const positionY = useTransform(scrollY, [100, 500], [-224, 0])
+    const rotate = useTransform(scrollY, [100, 700], [30, 0]);
+    const positionY = useTransform(scrollY, [100, 700], [-224, 0])
 
     return (
         <motion.div style={{ y: positionY, rotateX: rotate }}>
