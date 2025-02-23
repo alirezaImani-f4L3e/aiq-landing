@@ -37,6 +37,17 @@ export default {
             }
         }
     },
+    questions: {
+        desc: 'desc',
+        insufficient_credit: 'insufficient_credit',
+        insufficient_credit_desc: 'insufficient_credit_desc',
+        is_free: 'is_free',
+        is_free_desc: 'is free desc',
+        support_email: 'support email',
+        title: 'title',
+        whats_credit: 'whats credit',
+        whats_credit_desc: 'whats_credit desc',
+    },
     serviceProvidersTitle: "انقلابی در خودکار سازی کارهای هزاران کاربر",
     poweredBy: "قدرت گرفته از"
 }

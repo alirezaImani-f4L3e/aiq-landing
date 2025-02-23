@@ -12,7 +12,9 @@
         "newFeatures": "ویژگی های جدید",
         "pricing": "قیمت ها",
         "assistantsMarket": "فروشگاه دستیار ها",
-        "pluginsMarket": "فروشگاه افزونه ها"
+        "pluginsMarket": "فروشگاه افزونه ها",
+        "about": "درباره ما",
+        "contactUs": "ارتباط با ما"
     },
     "features": {
         "newFeature": "ویژگی جدید",

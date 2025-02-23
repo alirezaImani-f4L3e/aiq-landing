@@ -12,8 +12,6 @@ export const createI18nNext = (lang?: string) => {
         .use(LangDetector)
         .use(
             resourcesToBackend(async (lng: string, ns: string) => {
-                if (isDev && lng === "fa-IR") return import(`./default/${ns}`);
-
                 return import(`@/../locales/${normalizeLocale(lng)}/${ns}.json`)
             })
         )
