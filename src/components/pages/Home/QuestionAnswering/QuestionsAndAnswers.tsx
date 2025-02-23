@@ -9,6 +9,7 @@ import { Flexbox } from 'react-layout-kit';
 
 
 import QACollapse from './QACollapse';
+import { useGeneralStore } from '@/store/general/Provider';
 
 const useStyles = createStyles(({ css }) => ({
   collapse: css`
@@ -34,7 +35,7 @@ const useStyles = createStyles(({ css }) => ({
 const QuestionsAndAnswers = memo(() => {
   const { styles } = useStyles();
   const { t } = useTranslation('landing');
-  const mobile = false;
+  const mobile = useGeneralStore(s => s.isMobile);
 
   return (
     <Flexbox className={styles.container} gap={16} horizontal={!mobile} width={'100%'}>

@@ -1,16 +1,16 @@
 'use client'
 
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { useGeneralStore } from "@/store/general";
+import { useGeneralStore } from "@/store/general/Provider";
 import { memo } from "react"
 import { createStoreUpdater } from "zustand-utils";
 
 const StoreInitialization = memo(() => {
-    const useStoreUpdater = createStoreUpdater(useGeneralStore);
+    const setIsMobile = useGeneralStore(s => s.setIsMobile);
 
     const mobile = useIsMobile();
 
-    useStoreUpdater("isMobile", mobile);
+    setIsMobile(mobile)
 
     return null;
 })

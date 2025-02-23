@@ -7,11 +7,13 @@ import { RouteVariants } from "./utils/server/routeVariants";
 export const config = {
     matcher: [
         '/api(.*)',
-        '/'
+        '/',
+        '/pricing',
+        '/features'
     ]
 }
 
-const parseDefaultThemeFromTime = (request: NextRequest) => {
+const parseDefaultThemeFromTime = (request: NextRequest) => { // we will use it in near future
     const longitude = 'geo' in request && (request.geo as any)?.longitude
 
     if (typeof longitude === "number") {
@@ -26,7 +28,9 @@ const parseDefaultThemeFromTime = (request: NextRequest) => {
 }
 
 const defaultMiddleware = (request: NextRequest) => {
-    const theme = request.cookies.get(AIQ_THEME_APPEARANCE)?.value || parseDefaultThemeFromTime(request);
+    // const theme = request.cookies.get(AIQ_THEME_APPEARANCE)?.value || parseDefaultThemeFromTime(request);
+
+    const theme = 'dark';
 
     const locale = parseBrowserLanguage();
 

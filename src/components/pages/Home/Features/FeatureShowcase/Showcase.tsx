@@ -4,6 +4,7 @@ import { memo } from "react";
 import { Flexbox } from "react-layout-kit";
 import { useMotionValueEvent, useScroll, useTransform, motion } from "motion/react";
 import { Video } from "@lobehub/ui";
+import { useGeneralStore } from "@/store/general/Provider";
 
 const useStyles = createStyles(({ css, token }) => ({
     videoContainer: css`
@@ -48,10 +49,11 @@ const slides = [
 ]
 
 const Showcase = memo(() => {
+    const mobile = useGeneralStore(s => s.isMobile);
     const { styles } = useStyles();
     const { scrollY } = useScroll();
     const rotate = useTransform(scrollY, [100, 700], [30, 0]);
-    const positionY = useTransform(scrollY, [100, 700], [-224, 0])
+    const positionY = useTransform(scrollY, [100, 700], [mobile ? -56 : -224, 0])
 
     return (
         <motion.div style={{ y: positionY, rotateX: rotate }}>
@@ -61,7 +63,7 @@ const Showcase = memo(() => {
                 </div>
 
                 <div style={{ borderRadius: 'calc(16px * 0.96)' }} className={styles.containerSecondChild}>
-                    <Carousel arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={false}>
+                    <Carousel arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={mobile}>
                         {slides.map((slide) => <Flexbox key={slide.id} align="center" justify="center" style={{ maxWidth: '1000px', position: 'relative', zIndex: 10 }}>
                             <Video src={slide.videoUrl} poster={slide.poster} />
                         </Flexbox>)}

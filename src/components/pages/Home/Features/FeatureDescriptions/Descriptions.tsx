@@ -1,4 +1,6 @@
 import { BRANDING_NAME } from "@/const/branding";
+import { useGeneralStore } from "@/store/general/Provider";
+import { Grid } from "@lobehub/ui";
 import { Button } from "antd";
 import { createStyles } from "antd-style";
 import Link from "next/link";
@@ -7,19 +9,6 @@ import { useTranslation } from "react-i18next";
 import { Flexbox } from "react-layout-kit";
 
 const useStyles = createStyles(({ css, token }) => ({
-    descContainer: css`
-        --rows: 3;
-        --max-item-width: 300px;
-        --gap: 32px;
-        display: grid !important;
-        grid-template-columns: repeat(
-          auto-fill,
-          minmax(
-            max(var(--max-item-width), calc((100% - var(--gap) * (var(--rows) - 1)) / var(--rows))),
-            1fr
-          )
-        );
-    `,
     slogan: css`
         font-size: 32px;
         font-weight: bold;
@@ -50,24 +39,25 @@ const Descriptions = memo(() => {
     const { styles } = useStyles();
     const { t } = useTranslation("landing");
     const [assistants, plugins] = [10, 12];
+    const mobile = useGeneralStore(s => s.isMobile);
     return (
-        <Flexbox className={styles.descContainer} horizontal style={{ position: "relative" }} gap={32} width={"100%"}>
+        <Grid rows={mobile ? 1 : 3} horizontal style={{ position: "relative" }} gap={32} width={"100%"}>
             <Flexbox style={{ position: 'relative' }} gap={20} width={"100%"} align="start">
                 <h2 className={styles.slogan}>
                     {t("features.slogan")}:
                     <span>{t("features.completion")}</span>
                 </h2>
 
-                <Flexbox style={{ position: 'relative' }} gap={12} width={"100%"} wrap="wrap" horizontal>
-                    <Link href={'https://chat.aiqueue.ir/?utm_source_landing&utm_content=hero_get_started'}>
-                        <Button type="primary" variant="solid" size="large" color="primary">
+                <Flexbox style={{ position: 'relative' }} gap={12} width={"100%"} wrap="wrap" horizontal align="center" justify="center">
+                    <Link style={{ width: "100%" }} href={'https://chat.aiqueue.ir/?utm_source_landing&utm_content=hero_get_started'}>
+                        <Button type="primary" variant="solid" size="large" color="primary" style={{ width: "100%" }}>
                             {t("getStarted")}
                         </Button>
                     </Link>
                 </Flexbox>
             </Flexbox>
 
-            <Flexbox style={{ gridColumn: "span 2" }} gap={16}>
+            <Flexbox style={{ gridColumn: !mobile ? "span 2" : undefined }} gap={16}>
                 <p className={styles.mainDesc}>
                     {t("features.desc", {
                         appName: BRANDING_NAME
@@ -97,7 +87,7 @@ const Descriptions = memo(() => {
                     </Flexbox>
                 </Flexbox>
             </Flexbox>
-        </Flexbox>
+        </Grid>
     )
 })
 

@@ -3,6 +3,7 @@ import { memo } from "react";
 import { Flexbox } from "react-layout-kit";
 import Showcase from "./Showcase";
 import { Segmented } from "antd";
+import { useGeneralStore } from "@/store/general/Provider";
 
 const useStyles = createStyles(({ css, token }) => ({
     container: css`
@@ -17,10 +18,11 @@ const useStyles = createStyles(({ css, token }) => ({
 
 const FeatureShowcase = memo(() => {
     const { styles } = useStyles();
+    const mobile = useGeneralStore(s => s.isMobile);
     return (
         <Flexbox gap={24} align="center" className={styles.container}>
             {/* Segmented to show different features */}
-            <Segmented className={styles.featureSegmented} size="large" options={['Overview', 'Assistants', 'Text-to-Image', 'Text-to-Speech', 'Plugins', 'Multi-Models']} />
+            {!mobile && <Segmented className={styles.featureSegmented} size="large" options={['Overview', 'Assistants', 'Text-to-Image', 'Text-to-Speech', 'Plugins', 'Multi-Models']} />}
 
             <Showcase />
         </Flexbox>

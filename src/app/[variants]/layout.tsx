@@ -18,17 +18,17 @@ interface RootLayoutProps extends DynamicLayoutProps {
 const RootLayout = async ({ children, params }: RootLayoutProps) => {
     const { variants } = await params;
 
-    const { locale, theme, neutralColor, primaryColor } = RouteVariants.deserializeVariants(variants);
+    const { locale, isMobile, theme, neutralColor, primaryColor } = RouteVariants.deserializeVariants(variants);
 
     const direction = isRtlLang(locale) ? 'rtl' : 'ltr';
 
     return (
         <html dir={direction} lang={locale} suppressHydrationWarning>
             <body>
-                <GlobalProvider locale={locale} appearance={theme} neutralColor={neutralColor} primaryColor={primaryColor}>
+                <GlobalProvider locale={locale} isMobile={isMobile} appearance={theme} neutralColor={neutralColor} primaryColor={primaryColor}>
                     <Header />
                     {children}
-                    <Footer/>
+                    <Footer />
                 </GlobalProvider>
                 <Analytics />
             </body>
