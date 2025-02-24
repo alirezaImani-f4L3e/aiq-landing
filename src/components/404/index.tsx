@@ -10,7 +10,7 @@ import { Flexbox } from "react-layout-kit";
 const NotFound = memo(() => {
     const { t } = useTranslation('error');
     return (
-        <Flexbox align="center" justify="center" style={{ minHeight: '100%', width: '100%' }}>
+        <Flexbox align="center" justify="center" style={{ height: '100vh', width: '100%' }}>
             <h1 style={{
                 filter: 'blur(8px)',
                 fontSize: `min(${1000 / 3}px, 50vw)`,
@@ -27,7 +27,7 @@ const NotFound = memo(() => {
                 {t('notFound.title')}
             </h2>
 
-            <p style={{ lineHeight: '1.8', marginBottom: '2em' }}>
+            <p style={{ lineHeight: '1.8', marginBottom: '2em', display: 'flex' , justifyContent: "center", flexDirection: "column" , alignItems: "center" }}>
                 {t("notFound.desc")}
                 <br />
                 <div style={{ textAlign: 'center' }}>{t('notFound.check')}</div>
