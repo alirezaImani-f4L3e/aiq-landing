@@ -33,27 +33,27 @@ export interface FeatureCard {
 
 const features: FeatureCard[] = [
     {
-        imageUrl: "https://hub-apac-1.lobeobjects.space/landing/overview/f1.webp",
+        imageUrl: "/images/landing/overview/f1.webp",
         id: "anywhere"
     },
     {
-        imageUrl: "https://hub-apac-1.lobeobjects.space/landing/overview/f2.webp",
+        imageUrl: "/images/landing/overview/f2.webp",
         id: "simple"
     },
     {
-        imageUrl: "https://hub-apac-1.lobeobjects.space/landing/overview/f3.webp",
+        imageUrl: "/images/landing/overview/f3.webp",
         id: "team"
     },
     {
-        imageUrl: "https://hub-apac-1.lobeobjects.space/landing/overview/f4.webp",
+        imageUrl: "/images/landing/overview/f4.webp",
         id: "see"
     },
     {
-        imageUrl: "https://hub-apac-1.lobeobjects.space/landing/overview/f5.webp",
+        imageUrl: "/images/landing/overview/f5.webp",
         id: "hear"
     },
     {
-        imageUrl: "https://hub-apac-1.lobeobjects.space/landing/overview/f6.webp",
+        imageUrl: "/images/landing/overview/f6.webp",
         id: "plugins"
     }
 ]

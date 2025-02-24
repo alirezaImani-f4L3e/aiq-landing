@@ -16,15 +16,6 @@ const useStyles = createStyles(({ css, token }) => ({
   scrollbar: css`
     scrollbar-color: ${token.colorFill} transparent;
     scrollbar-width: thin;
-
-    #lobe-mobile-scroll-container {
-      scrollbar-width: none;
-
-      ::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-      }
-    }
   `,
 
   // so this is a polyfill for older browsers

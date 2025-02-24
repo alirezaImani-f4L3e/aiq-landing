@@ -45,33 +45,33 @@ const useStyles = createStyles(({ css, token }) => ({
 const slides = [
     {
         id: 0,
-        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/0.webm",
-        poster: "https://hub-apac-1.lobeobjects.space/landing/0.webp"
+        videoUrl: "/videos/landing/0.webm",
+        poster: "/images/landing/0.webp"
     },
     {
         id: 1,
-        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/1.webm",
-        poster: "https://hub-apac-1.lobeobjects.space/landing/1.webp"
+        videoUrl: "/videos/landing/1.webm",
+        poster: "/images/landing/1.webp"
     },
     {
         id: 2,
-        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/2.webm",
-        poster: "https://hub-apac-1.lobeobjects.space/landing/2.webp"
+        videoUrl: "/videos/landing/2.webm",
+        poster: "/images/landing/2.webp"
     },
     {
         id: 3,
-        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/3.webm",
-        poster: "https://hub-apac-1.lobeobjects.space/landing/3.webp"
+        videoUrl: "/videos/landing/3.webm",
+        poster: "/images/landing/3.webp"
     },
     {
         id: 4,
-        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/4.webm",
-        poster: "https://hub-apac-1.lobeobjects.space/landing/4.webp"
+        videoUrl: "/videos/landing/4.webm",
+        poster: "/images/landing/4.webp"
     },
     {
         id: 5,
-        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/5.webm",
-        poster: "https://hub-apac-1.lobeobjects.space/landing/5.webp"
+        videoUrl: "/videos/landing/5.webm",
+        poster: "/images/landing/5.webp"
     }
 ]
 
