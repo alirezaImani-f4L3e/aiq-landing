@@ -7,19 +7,7 @@ export default ({ token }: { prefixCls: string; token: Theme }) => css`
   html,
   body,
   #__next {
-    position: relative;
-
-    overscroll-behavior: none;
-
-    height: 100%;
-    min-height: 100dvh;
-    max-height: 100dvh;
-
-    background: ${token.colorBgLayout};
-
-    @media (min-device-width: 576px) {
-      overflow: hidden;
-    }
+    scroll-padding-top: 72px;
   }
 
   * {

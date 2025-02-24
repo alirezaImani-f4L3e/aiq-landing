@@ -1,6 +1,6 @@
 import { createStyles } from "antd-style";
 import Link from "next/link";
-import { memo } from "react";
+import { memo, Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import { Flexbox } from "react-layout-kit";
 
@@ -41,13 +41,13 @@ const FooterColumn = memo<FooterColumnProps>(({ title, items }) => {
         <div className={styles.colTitle}>{title}</div>
 
         <Flexbox gap={8} className={styles.colContainer}>
-            {items.map((item: FooterColumnItem) => <>
+            {items.map((item: FooterColumnItem) => <Fragment key={item.text}>
                 {item.type === "link" && <Link href={item.href} target={item.linkTarget}>
                     <Flexbox gap={4} align="center" horizontal>
                         {t(`footer.${item.text}`)}
                     </Flexbox>
                 </Link>}
-            </>)}
+            </Fragment>)}
         </Flexbox>
     </Flexbox>
 })

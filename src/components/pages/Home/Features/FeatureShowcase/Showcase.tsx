@@ -1,10 +1,10 @@
 import { Carousel } from "antd";
 import { createStyles } from "antd-style";
-import { memo } from "react";
+import { memo, Fragment, RefObject } from "react";
 import { Flexbox } from "react-layout-kit";
-import { useMotionValueEvent, useScroll, useTransform, motion } from "motion/react";
-import { Video } from "@lobehub/ui";
+import { useScroll, useTransform, motion } from "motion/react";
 import { useGeneralStore } from "@/store/general/Provider";
+import { CarouselRef } from "antd/es/carousel";
 
 const useStyles = createStyles(({ css, token }) => ({
     videoContainer: css`
@@ -16,6 +16,7 @@ const useStyles = createStyles(({ css, token }) => ({
         border: 1px solid ${token.colorBorder};
         -webkit-transition: all 2s ease-in-out;
         transition: all 2s ease-in-out;
+        box-shadow: 0 0 12vw -4vw #a092ff;;
     `,
     containerFirstChild: css`
         position: absolute;
@@ -24,7 +25,7 @@ const useStyles = createStyles(({ css, token }) => ({
         width: 100%;
         height: 100%;
     `,
-    containerSecondChild: css`
+    sliderContainer: css`
         position: relative;
         z-index:1;
         overflow:hidden;
@@ -32,23 +33,52 @@ const useStyles = createStyles(({ css, token }) => ({
         height: calc(100% - 2px);
         margin: 1px;
         background: black;
+
+        & .slick-slide { // Just to fix slider item empty space because of RTL carousel
+            display:flex !important;
+            justify-content: end !important;
+        }
     `
 }))
 
 const slides = [
     {
-        id: 1,
+        id: 0,
         videoUrl: "https://hub-apac-1.lobeobjects.space/landing/0.webm",
         poster: "https://hub-apac-1.lobeobjects.space/landing/0.webp"
     },
     {
+        id: 1,
+        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/1.webm",
+        poster: "https://hub-apac-1.lobeobjects.space/landing/1.webp"
+    },
+    {
         id: 2,
-        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/0.webm",
-        poster: "https://hub-apac-1.lobeobjects.space/landing/0.webp"
+        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/2.webm",
+        poster: "https://hub-apac-1.lobeobjects.space/landing/2.webp"
+    },
+    {
+        id: 3,
+        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/3.webm",
+        poster: "https://hub-apac-1.lobeobjects.space/landing/3.webp"
+    },
+    {
+        id: 4,
+        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/4.webm",
+        poster: "https://hub-apac-1.lobeobjects.space/landing/4.webp"
+    },
+    {
+        id: 5,
+        videoUrl: "https://hub-apac-1.lobeobjects.space/landing/5.webm",
+        poster: "https://hub-apac-1.lobeobjects.space/landing/5.webp"
     }
 ]
 
-const Showcase = memo(() => {
+interface ShowcaseProps {
+    sliderRef: RefObject<undefined>
+}
+
+const Showcase = memo<ShowcaseProps>(({ sliderRef }) => {
     const mobile = useGeneralStore(s => s.isMobile);
     const { styles } = useStyles();
     const { scrollY } = useScroll();
@@ -62,11 +92,15 @@ const Showcase = memo(() => {
                     {/* Moving light around the border */}
                 </div>
 
-                <div style={{ borderRadius: 'calc(16px * 0.96)' }} className={styles.containerSecondChild}>
-                    <Carousel arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={mobile}>
-                        {slides.map((slide) => <Flexbox key={slide.id} align="center" justify="center" style={{ maxWidth: '1000px', position: 'relative', zIndex: 10 }}>
-                            <Video src={slide.videoUrl} poster={slide.poster} />
-                        </Flexbox>)}
+                <div style={{ borderRadius: 'calc(16px * 0.96)' }} className={styles.sliderContainer}>
+                    <Carousel ref={sliderRef} slidesToShow={1} arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={mobile}>
+                        {slides.map((slide) => <Fragment key={slide.id}>
+                            <Flexbox align="center" justify="center" style={{ maxWidth: '1000px', position: 'relative', zIndex: 10 }}>
+                                <video controls muted autoPlay preload="none" poster={slide.poster} style={{ width: "100%", display: "inline-block" }}>
+                                    <source src={slide.videoUrl} />
+                                </video>
+                            </Flexbox>
+                        </Fragment>)}
                     </Carousel>
                 </div>
             </div>
