@@ -13,4 +13,6 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 
+eslintConfig.rules['react/no-unknown-property'] = 0;
+
 export default eslintConfig;

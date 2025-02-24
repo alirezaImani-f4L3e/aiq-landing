@@ -2,7 +2,6 @@
 
 import { Grid } from "@lobehub/ui";
 import { createStyles } from "antd-style";
-import Link from "next/link";
 import { memo } from "react";
 import { Center, Flexbox } from "react-layout-kit";
 import BrandData from "./BrandData";

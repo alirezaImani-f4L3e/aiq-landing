@@ -1,15 +1,8 @@
 import { Button } from "antd";
-import { createStyles } from "antd-style";
 import Link from "next/link";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Flexbox } from "react-layout-kit";
-
-const useStyles = createStyles(({ css }) => ({
-    actionsContainer: css`
-        z-index: 10;
-    `
-}))
 
 const HeaderActions = memo(() => {
     const { t } = useTranslation("landing");
