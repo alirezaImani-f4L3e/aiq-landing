@@ -8,6 +8,7 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Center, Flexbox } from "react-layout-kit";
 import Slogan from "./Slogan";
+import { useGeneralStore } from "@/store/general/Provider";
 
 const useStyles = createStyles(({ css, token }) => ({
     container: css`
@@ -59,7 +60,7 @@ const useStyles = createStyles(({ css, token }) => ({
         font-size: min(7vh, 40px);
     `,
     titleText: css`
-        font-size: 1em;
+        font-size: 1.5em;
         font-weight: 900;
         line-height: 1;
         -webkit-transition: all 0.5s ease-in-out;
@@ -85,9 +86,11 @@ const useStyles = createStyles(({ css, token }) => ({
 const Content = memo(() => {
     const { styles } = useStyles();
     const { t } = useTranslation(['common', 'landing']);
+
+    const mobile = useGeneralStore(s => s.isMobile);
     return (
         <Flexbox id="hero" className={styles.container} align="center" gap={24} justify="center" style={{ maxWidth: '1200px', height: 'calc(var(--vh, 100vh) * 1)', overflow: 'hidden', width: '100%' }}>
-            <Link href={'https://chat.aiqueue.ir/files'} style={{ marginBottom: '16px' }}>
+            <Link href={'https://chat.aiqueue.ir/files'} style={{ marginBottom: '16px' , width: mobile ? "75%" : undefined }}>
                 <Flexbox padding={8} gap={8} align="center" horizontal className={styles.featureTag}>
                     <Center style={{ background: '#ffb224', color: 'black' }} className={styles.newTag}>
                         {t("features.newFeature")}

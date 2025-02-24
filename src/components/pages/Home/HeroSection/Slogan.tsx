@@ -6,7 +6,7 @@ import { Center } from "react-layout-kit";
 const useStyles = createStyles(({ css }) => ({
     container: css`
         height: min(8.5vw, 110px);
-        font-size: min(10vw, 100px);
+        font-size: min(10vw, 80px);
         font-weight: 900;
         font-style: italic;
         line-height: 1;

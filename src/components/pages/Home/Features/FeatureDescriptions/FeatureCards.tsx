@@ -80,7 +80,7 @@ const renderFeature = (feature: FeatureCard) => {
 
 const FeatureCards = memo(() => {
     return (
-        <SpotlightCard columns={3} items={features} renderItem={renderFeature} />
+        <SpotlightCard id="feature_cards" columns={3} items={features} renderItem={renderFeature} />
     )
 })
 

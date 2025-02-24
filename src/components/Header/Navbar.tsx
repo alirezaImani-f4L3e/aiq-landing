@@ -57,13 +57,13 @@ const Navbar = memo(() => {
 
     const tabItems: TabItem[] = [
         {
-            label: <Link href={'/features'}>{t("header.tabs.features")}</Link>,
+            label: <Link href={'#feature_cards'}>{t("header.tabs.features")}</Link>,
             key: 'features'
         },
-        {
-            label: <Link href={'/pricing'}>{t("header.tabs.pricing")}</Link>,
-            key: 'pricing'
-        }
+        // {
+        //     label: <Link href={'/pricing'}>{t("header.tabs.pricing")}</Link>,
+        //     key: 'pricing'
+        // }
     ]
 
     return (
