@@ -1,9 +1,10 @@
 import { Carousel } from "antd";
 import { createStyles } from "antd-style";
-import { memo, Fragment, RefObject } from "react";
+import { memo, Fragment, RefObject, useState, Dispatch, SetStateAction } from "react";
 import { Flexbox } from "react-layout-kit";
 import { useScroll, useTransform, motion } from "motion/react";
 import { useGeneralStore } from "@/store/general/Provider";
+import { ShowcaseSection } from ".";
 import { CarouselRef } from "antd/es/carousel";
 
 const useStyles = createStyles(({ css, token }) => ({
@@ -75,36 +76,55 @@ const slides = [
 ]
 
 interface ShowcaseProps {
-    sliderRef: RefObject<undefined>
+    sliderRef: RefObject<CarouselRef | null>,
+    currentSlide: ShowcaseSection,
+    setCurrentSlide: Dispatch<SetStateAction<ShowcaseSection>>
 }
 
-const Showcase = memo<ShowcaseProps>(({ sliderRef }) => {
+const Showcase = memo<ShowcaseProps>(({ sliderRef, currentSlide, setCurrentSlide }) => {
     const mobile = useGeneralStore(s => s.isMobile);
     const { styles } = useStyles();
     const { scrollY } = useScroll();
     const rotate = useTransform(scrollY, [100, 700], [30, 0]);
-    const positionY = useTransform(scrollY, [100, 700], [mobile ? -56 : -224, 0])
+    const positionY = useTransform(scrollY, [100, 700], [mobile ? -200 : -224, 0])
 
     return (
-        <motion.div style={{ y: positionY, rotateX: rotate }}>
-            <div style={{ borderRadius: '16px' }} className={styles.videoContainer}>
-                <div style={{ borderRadius: 'calc(16px * 0.96)' }} className={styles.containerFirstChild}>
-                    {/* Moving light around the border */}
-                </div>
+        <>
+            <motion.div style={{ y: positionY, rotateX: rotate }}>
+                <div style={{ borderRadius: '16px' }} className={styles.videoContainer}>
+                    <div style={{ borderRadius: 'calc(16px * 0.96)' }} className={styles.containerFirstChild}>
+                        {/* Moving light around the border */}
+                    </div>
 
-                <div style={{ borderRadius: 'calc(16px * 0.96)' }} className={styles.sliderContainer}>
-                    <Carousel ref={sliderRef} slidesToShow={1} arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={mobile}>
-                        {slides.map((slide) => <Fragment key={slide.id}>
-                            <Flexbox align="center" justify="center" style={{ maxWidth: '1000px', position: 'relative', zIndex: 10 }}>
-                                <video controls muted autoPlay preload="none" poster={slide.poster} style={{ width: "100%", display: "inline-block" }}>
-                                    <source src={slide.videoUrl} />
-                                </video>
-                            </Flexbox>
-                        </Fragment>)}
-                    </Carousel>
+                    <div style={{ borderRadius: 'calc(16px * 0.96)' }} className={styles.sliderContainer}>
+                        <Carousel rtl ref={sliderRef} slidesToShow={1} arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={mobile} beforeChange={(_, next) => setCurrentSlide(next)}>
+                            {slides.map((slide) => <Fragment key={slide.id}>
+                                <Flexbox align="center" justify="center" style={{ maxWidth: '1000px', position: 'relative', zIndex: 10 }}>
+                                    <video controls muted autoPlay preload="none" poster={slide.poster} style={{ width: "100%", display: "inline-block" }} onEnded={() => sliderRef.current?.next()}>
+                                        <source src={slide.videoUrl} />
+                                    </video>
+                                </Flexbox>
+                            </Fragment>)}
+                        </Carousel>
+                    </div>
                 </div>
-            </div>
-        </motion.div>
+            </motion.div>
+
+            {mobile && <Flexbox horizontal gap={6}>
+                {slides.map((slide) => {
+                    return <div
+                        key={`dots-${slide.id}`}
+                        style={{ cursor: "pointer", background: "#fff", borderRadius: "3px", height: "6px", width: "6px", opacity: slide.id === currentSlide ? 1 : 0.2 }}
+                        onClick={() => {
+                            setCurrentSlide(slide.id)
+                            sliderRef.current?.goTo(slide.id);
+                        }}
+                    >
+
+                    </div>
+                })}
+            </Flexbox>}
+        </>
     )
 })
 

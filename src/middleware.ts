@@ -3,6 +3,7 @@ import { AIQ_THEME_APPEARANCE } from "./const/theme";
 import { parseBrowserLanguage } from "./utils/locale";
 import { UAParser } from "ua-parser-js";
 import { RouteVariants } from "./utils/server/routeVariants";
+import { notFound } from "next/navigation";
 
 export const config = {
     matcher: [

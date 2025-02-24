@@ -1,10 +1,11 @@
 import { createStyles } from "antd-style";
-import { createRef, memo, useRef } from "react";
+import { createRef, memo, useEffect, useRef, useState } from "react";
 import { Flexbox } from "react-layout-kit";
 import Showcase from "./Showcase";
-import { Segmented, SegmentedProps } from "antd";
+import { Segmented, SegmentedProps, Typography } from "antd";
 import { useGeneralStore } from "@/store/general/Provider";
 import { useTranslation } from "react-i18next";
+import { CarouselRef } from "antd/es/carousel";
 
 const useStyles = createStyles(({ css, token }) => ({
     container: css`
@@ -17,7 +18,7 @@ const useStyles = createStyles(({ css, token }) => ({
     `
 }))
 
-enum ShowcaseSection {
+export enum ShowcaseSection {
     Overview,
     Assistants,
     TextToImage,
@@ -30,7 +31,7 @@ const FeatureShowcase = memo(() => {
     const { styles } = useStyles();
     const mobile = useGeneralStore(s => s.isMobile);
     const { t } = useTranslation("landing");
-    const sliderRef = createRef();
+    const sliderRef = createRef<CarouselRef>();
 
     const showcaseOptions: SegmentedProps['options'] = [
         {
@@ -59,16 +60,18 @@ const FeatureShowcase = memo(() => {
         }
     ]
 
+    const [currentSlide, setCurrentSlide] = useState(ShowcaseSection.Overview);
+
     return (
         <Flexbox gap={24} align="center" className={styles.container}>
             {/* Segmented to show different features */}
-            {!mobile && <Segmented className={styles.featureSegmented} size="large" options={showcaseOptions} onChange={activeSlide => {
-                if(sliderRef.current){
-                    sliderRef.current.goTo(activeSlide);
+            {!mobile ? <Segmented className={styles.featureSegmented} size="large" options={showcaseOptions} onChange={activeSlide => {
+                if (sliderRef.current) {
+                    sliderRef.current.goTo(activeSlide as number);
                 }
-            }} />}
+            }} /> : <Typography.Title level={3}>{(showcaseOptions.find((v) => (v as any).value == currentSlide) as any)?.label}</Typography.Title>}
 
-            <Showcase sliderRef={sliderRef} />
+            <Showcase sliderRef={sliderRef} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
         </Flexbox>
     )
 })
