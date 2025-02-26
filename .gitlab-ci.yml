@@ -16,7 +16,7 @@ build:
     tags:
         - ser-staging-04
 publish:
-    when: on_success
+    when: manual
     needs:
       - job: build
     stage: publish
@@ -28,6 +28,7 @@ publish:
         variables:
           PROJECT_PATH: "aiqueue-develop"
     script:
+        - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
         - docker pull $CI_REGISTRY_IMAGE/base:$CI_BUILD_REF_SLUG
         - docker compose -f /opt/$PROJECT_PATH/conf/docker-compose.yml up -d landing
     tags:
