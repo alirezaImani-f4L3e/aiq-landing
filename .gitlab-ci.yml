@@ -3,6 +3,7 @@ stages:
   - publish
 
 build:
+    when: manual
     stage: build
     rules:
       - if: $CI_BUILD_REF_NAME == "master"
@@ -18,7 +19,7 @@ build:
 publish:
     when: manual
  #   needs:
-  #    - job: build
+ #    - job: build
     stage: publish
     rules:
       - if: $CI_BUILD_REF_NAME == "master"
