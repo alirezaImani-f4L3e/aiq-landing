@@ -19,7 +19,7 @@ publish:
     when: on_success
     needs:
       - job: build
-    stage: build
+    stage: publish
     rules:
       - if: $CI_BUILD_REF_NAME == "master"
         variables:
