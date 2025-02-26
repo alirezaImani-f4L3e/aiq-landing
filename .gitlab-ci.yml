@@ -23,11 +23,9 @@ publish:
     stage: publish
     rules:
       - if: $CI_BUILD_REF_NAME == "master"
-        variables:
-          PROJECT_PATH: "aiqueue-master"
       - if: $CI_BUILD_REF_NAME == "develop"
-        variables:
-          PROJECT_PATH: "aiqueue-develop"
+    variables:
+      PROJECT_PATH: "aiqueue-develop"
     script:
         - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
         - docker pull $CI_REGISTRY_IMAGE/base:$CI_BUILD_REF_SLUG
