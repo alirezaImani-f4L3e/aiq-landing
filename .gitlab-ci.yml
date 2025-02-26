@@ -15,5 +15,20 @@ build:
         - docker image prune -f
     tags:
         - ser-staging-04
-
-    
+publish:
+    when: on_success
+    needs:
+      - job: build
+    stage: build
+    rules:
+      - if: $CI_BUILD_REF_NAME == "master"
+        variables:
+          PROJECT_PATH: "aiqueue-master"
+      - if: $CI_BUILD_REF_NAME == "develop"
+        variables:
+          PROJECT_PATH: "aiqueue-develop"
+    script:
+        - docker pull $CI_REGISTRY_IMAGE/base:$CI_BUILD_REF_SLUG
+        - docker compose -f /opt/$PROJECT_PATH/conf/docker-compose.yml up -d landing
+    tags:
+        - ser-aiqueue-01
