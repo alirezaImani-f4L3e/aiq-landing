@@ -17,8 +17,8 @@ build:
         - ser-staging-04
 publish:
     when: manual
-    needs:
-      - job: build
+ #   needs:
+  #    - job: build
     stage: publish
     rules:
       - if: $CI_BUILD_REF_NAME == "master"
