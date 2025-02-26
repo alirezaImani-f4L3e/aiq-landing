@@ -1,6 +1,6 @@
 import { Carousel } from "antd";
 import { createStyles } from "antd-style";
-import { memo, Fragment, RefObject, useState, Dispatch, SetStateAction } from "react";
+import { Fragment, RefObject, Dispatch, SetStateAction } from "react";
 import { Flexbox } from "react-layout-kit";
 import { useScroll, useTransform, motion } from "motion/react";
 import { useGeneralStore } from "@/store/general/Provider";
@@ -38,6 +38,7 @@ const useStyles = createStyles(({ css, token }) => ({
         & .slick-slide { // Just to fix slider item empty space because of RTL carousel
             display:flex !important;
             justify-content: end !important;
+            pointer-events: auto !important;
         }
     `
 }))
@@ -81,7 +82,7 @@ interface ShowcaseProps {
     setCurrentSlide: Dispatch<SetStateAction<ShowcaseSection>>
 }
 
-const Showcase = memo<ShowcaseProps>(({ sliderRef, currentSlide, setCurrentSlide }) => {
+const Showcase = ({ sliderRef, currentSlide, setCurrentSlide }: ShowcaseProps) => {
     const mobile = useGeneralStore(s => s.isMobile);
     const { styles } = useStyles();
     const { scrollY } = useScroll();
@@ -97,11 +98,14 @@ const Showcase = memo<ShowcaseProps>(({ sliderRef, currentSlide, setCurrentSlide
                     </div>
 
                     <div style={{ borderRadius: 'calc(16px * 0.96)' }} className={styles.sliderContainer}>
-                        <Carousel rtl ref={sliderRef} slidesToShow={1} arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={mobile} beforeChange={(_, next) => setCurrentSlide(next)}>
+                        <Carousel ref={sliderRef} slidesToShow={1} arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={mobile} beforeChange={(_, next) => {
+                            setCurrentSlide(next)
+                        }}>
                             {slides.map((slide) => <Fragment key={slide.id}>
                                 <Flexbox align="center" justify="center" style={{ maxWidth: '1000px', position: 'relative', zIndex: 10 }}>
-                                    <video controls muted autoPlay preload="none" poster={slide.poster} style={{ width: "100%", display: "inline-block" }} onEnded={() => sliderRef.current?.next()}>
-                                        <source src={slide.videoUrl} />
+                                    <video muted controls preload="none" tabIndex={-1} src={slide.videoUrl} poster={slide.poster} style={{ width: "100%", display: "inline-block" }} onEnded={() => {
+                                        sliderRef.current?.next();
+                                    }}>
                                     </video>
                                 </Flexbox>
                             </Fragment>)}
@@ -126,6 +130,6 @@ const Showcase = memo<ShowcaseProps>(({ sliderRef, currentSlide, setCurrentSlide
             </Flexbox>}
         </>
     )
-})
+}
 
 export default Showcase;

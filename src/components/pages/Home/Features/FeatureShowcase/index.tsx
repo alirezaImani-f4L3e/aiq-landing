@@ -1,5 +1,5 @@
 import { createStyles } from "antd-style";
-import { createRef, memo, useEffect, useRef, useState } from "react";
+import { createRef, memo, useState } from "react";
 import { Flexbox } from "react-layout-kit";
 import Showcase from "./Showcase";
 import { Segmented, SegmentedProps, Typography } from "antd";
@@ -65,7 +65,9 @@ const FeatureShowcase = memo(() => {
     return (
         <Flexbox gap={24} align="center" className={styles.container}>
             {/* Segmented to show different features */}
-            {!mobile ? <Segmented className={styles.featureSegmented} size="large" options={showcaseOptions} onChange={activeSlide => {
+            {!mobile ? <Segmented className={styles.featureSegmented} size="large" value={currentSlide} options={showcaseOptions} onChange={activeSlide => {
+                console.log("active slide " , activeSlide);
+                setCurrentSlide(activeSlide as number);
                 if (sliderRef.current) {
                     sliderRef.current.goTo(activeSlide as number);
                 }
