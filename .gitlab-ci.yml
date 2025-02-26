@@ -3,7 +3,6 @@ stages:
   - publish
 
 build:
-    when: manual
     stage: build
     rules:
       - if: $CI_BUILD_REF_NAME == "master"
@@ -17,9 +16,9 @@ build:
     tags:
         - ser-staging-04
 publish:
-    when: manual
- #   needs:
- #    - job: build
+    when: on_success
+    needs:
+      - job: build
     stage: publish
     rules:
       - if: $CI_BUILD_REF_NAME == "master"
