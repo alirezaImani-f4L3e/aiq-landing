@@ -6,6 +6,7 @@ import { useScroll, useTransform, motion } from "motion/react";
 import { useGeneralStore } from "@/store/general/Provider";
 import { ShowcaseSection } from ".";
 import { CarouselRef } from "antd/es/carousel";
+import Image from "next/image";
 
 const useStyles = createStyles(({ css, token }) => ({
     videoContainer: css`
@@ -76,6 +77,33 @@ const slides = [
     }
 ]
 
+const imageSlides = [
+    {
+        id: 0,
+        image: "/images/hero_section/overview.png"
+    },
+    {
+        id: 1,
+        image: "/images/hero_section/assistants.png"
+    },
+    {
+        id: 2,
+        image: "/images/hero_section/image_generation.png"
+    },
+    {
+        id: 3,
+        image: "/images/hero_section/speech_to_text.png"
+    },
+    {
+        id: 4,
+        image: "/images/hero_section/plugins.png"
+    },
+    {
+        id: 5,
+        image: "/images/hero_section/supported_models.png"
+    }
+]
+
 interface ShowcaseProps {
     sliderRef: RefObject<CarouselRef | null>,
     currentSlide: ShowcaseSection,
@@ -101,12 +129,18 @@ const Showcase = ({ sliderRef, currentSlide, setCurrentSlide }: ShowcaseProps) =
                         <Carousel ref={sliderRef} slidesToShow={1} arrows={false} style={{ width: '1200px', maxWidth: 'calc(100vw - 32px)' }} dots={mobile} beforeChange={(_, next) => {
                             setCurrentSlide(next)
                         }}>
-                            {slides.map((slide) => <Fragment key={slide.id}>
+                            {/* {slides.map((slide) => <Fragment key={slide.id}>
                                 <Flexbox align="center" justify="center" style={{ maxWidth: '1000px', position: 'relative', zIndex: 10 }}>
                                     <video muted controls preload="none" tabIndex={-1} src={slide.videoUrl} poster={slide.poster} style={{ width: "100%", display: "inline-block" }} onEnded={() => {
                                         sliderRef.current?.next();
                                     }}>
                                     </video>
+                                </Flexbox>
+                            </Fragment>)} */}
+
+                            {imageSlides.map((slide) => <Fragment key={slide.id}>
+                                <Flexbox align="center" justify="center" style={{ maxWidth: '1000px', position: 'relative', zIndex: 10 }}>
+                                    <img tabIndex={-1} style={{ width: "100%", display: "inline-block" }} src={slide.image} alt="Image"/>
                                 </Flexbox>
                             </Fragment>)}
                         </Carousel>
