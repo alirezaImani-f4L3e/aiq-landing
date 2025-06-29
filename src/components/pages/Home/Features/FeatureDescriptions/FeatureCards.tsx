@@ -1,4 +1,4 @@
-import { SpotlightCard } from "@lobehub/ui";
+import { SpotlightCard } from "@lobehub/ui/awesome";
 import { createStyles } from "antd-style";
 import { memo } from "react";
 import { Flexbox } from "react-layout-kit";

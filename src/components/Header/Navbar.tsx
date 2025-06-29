@@ -49,7 +49,6 @@ export interface TabItem {
     key: PageKey;
 }
 
-
 const Navbar = memo(() => {
     const { t } = useTranslation("common");
     const { styles } = useStyles();

@@ -1,26 +1,28 @@
-'use client'
+"use client";
 
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
 import HeroSection from "./HeroSection";
 import Features from "./Features";
 import QuestionAnswering from "./QuestionAnswering";
 import { notFound, usePathname } from "next/navigation";
+import LobeChat from "./lobeChat";
 
 const Home = () => {
-    const { t } = useTranslation('common');
-    const pathname = usePathname();
+  const { t } = useTranslation("common");
+  const pathname = usePathname();
 
-    if (pathname !== "/") { // FIXME: for now we have only / path in the project
-        return notFound();
-    }
-    return (
-        <>
-
-            <HeroSection />
-            <Features />
-            <QuestionAnswering />
-        </>
-    );
-}
+  if (pathname !== "/") {
+    // FIXME: for now we have only / path in the project
+    return notFound();
+  }
+  return (
+    <>
+      <HeroSection />
+      <Features />
+      <QuestionAnswering />
+      <LobeChat />
+    </>
+  );
+};
 
 export default Home;

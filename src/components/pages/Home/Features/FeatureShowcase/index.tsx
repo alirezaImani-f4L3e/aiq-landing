@@ -64,7 +64,7 @@ const FeatureShowcase = memo(() => {
 
     return (
         <Flexbox gap={24} align="center" className={styles.container}>
-            {/* Segmented to show different features */}
+            Segmented to show different features
             {!mobile ? <Segmented className={styles.featureSegmented} size="large" value={currentSlide} options={showcaseOptions} onChange={activeSlide => {
                 console.log("active slide " , activeSlide);
                 setCurrentSlide(activeSlide as number);
