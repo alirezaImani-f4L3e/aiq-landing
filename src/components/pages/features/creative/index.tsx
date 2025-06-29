@@ -2,7 +2,7 @@ import { Image } from "@lobehub/ui";
 import { createStyles } from "antd-style";
 import { Flexbox } from "react-layout-kit";
 
-const useStyles = createStyles(({ css }) => ({
+const useStyles = createStyles(({ css, responsive }) => ({
   wrapper: css`
     width: 100%;
     display: flex;
@@ -15,6 +15,10 @@ const useStyles = createStyles(({ css }) => ({
     font-weight: bold;
     font-style: italic;
     text-align: center;
+    ${responsive.mobile} {
+      font-size: 32px;
+      padding: 0 16px;
+    }
   `,
   boxWrapper: css`
     width: 100%;
@@ -31,6 +35,9 @@ const useStyles = createStyles(({ css }) => ({
     background-color: #0d0d0d;
     padding: 8px 24px;
     border-radius: 16px;
+    ${responsive.mobile} {
+      width: 70%;
+    }
   `,
   pargh: css`
     font-size: 14px;
@@ -39,6 +46,7 @@ const useStyles = createStyles(({ css }) => ({
   aiWrapper: css`
     width: 100%;
     margin-top: 68px;
+    padding: 0 16px;
   `,
   generationImage: css`
     width: 100%;
@@ -52,7 +60,43 @@ const useStyles = createStyles(({ css }) => ({
     width: 100%;
     height: 374px;
     margin-top: 16px;
-     background-color: #050505;
+    background-color: #050505;
+    display: flex;
+    gap: 16px;
+    ${responsive.mobile} {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 200px;
+    }
+  `,
+  generationContainer: css`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    ${responsive.mobile} {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  `,
+  generationContainerImage: css`
+    width: 60%;
+    height: 100%;
+    border-radius: 16px;
+    ${responsive.mobile} {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      margin-top: 16px;
+    }
+  `,
+  generationVideoBox: css`
+    width: 50%;
+    heigth: 100%;
+    ${responsive.mobile} {
+      width: 100%;
+      height: 100%;
+    }
   `,
 }));
 
@@ -86,14 +130,16 @@ const Creative = () => {
 
       <Flexbox className={styles.aiWrapper}>
         <div className={styles.generationImage}>
-          <Flexbox
-            style={{ width: "100%", height: "100%" }}
-            horizontal
-            justify="space-between"
+          <div
+            className={styles.generationContainer}
+            // style={{ width: "100%", height: "100%" }}
+            // horizontal
+            // justify="space-between"
           >
             <Image
-              style={{ width: "60%", height: "100%", borderRadius: "16px" }}
+              style={{ width: "100%", height: "100%", borderRadius: "16px" }}
               src="/images/features/gallery.webp"
+              preview={false}
             />
             <Flexbox
               align="start"
@@ -122,11 +168,11 @@ const Creative = () => {
                 کنید
               </span>
             </Flexbox>
-          </Flexbox>
+          </div>
         </div>
 
-        <Flexbox className={styles.generationVideo} horizontal gap={"16px"}>
-          <Flexbox style={{ width: "50%", height: "100%" }}>
+        <div className={styles.generationVideo}>
+          <div className={styles.generationVideoBox}>
             <Flexbox
               align="start"
               horizontal={false}
@@ -164,11 +210,12 @@ const Creative = () => {
                 style={{ width: "100%", marginTop: "auto" }}
                 src="/images/features/wifi.webp"
                 variant="borderless"
+                preview={false}
               />
             </Flexbox>
-          </Flexbox>
+          </div>
 
-          <Flexbox style={{ width: "50%", height: "100%" }}>
+          <div className={styles.generationVideoBox}>
             <Flexbox
               align="start"
               horizontal={false}
@@ -205,10 +252,11 @@ const Creative = () => {
                 style={{ width: "80%", marginTop: "auto" }}
                 src="/images/features/cat.webp"
                 variant="borderless"
+                preview={false}
               />
             </Flexbox>
-          </Flexbox>
-        </Flexbox>
+          </div>
+        </div>
       </Flexbox>
     </div>
   );
