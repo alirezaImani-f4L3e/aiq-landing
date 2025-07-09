@@ -28,6 +28,7 @@ const useStyles = createStyles(({ css, responsive }) => ({
     align-items: center;
     font-weight: bold;
     font-style: italic;
+    line-height:1.2;
 
     ${responsive.mobile} {
       font-size: 32px;
@@ -40,7 +41,7 @@ const useStyles = createStyles(({ css, responsive }) => ({
     font-size: 24px;
     font-weight: 400;
     line-height: 1.6;
-    text-align: justify;
+    text-align: center;
     margin-bottom: 22px;
     color: #999999;
 
@@ -59,7 +60,6 @@ const useStyles = createStyles(({ css, responsive }) => ({
 }));
 
 const FeatureText: React.FC = () => {
-  const { Title } = Typography;
   const { styles } = useStyles();
 
   return (
@@ -78,10 +78,10 @@ const FeatureText: React.FC = () => {
       </span>
 
       <Flexbox style={{ padding: "0 16px" }} gap={"15px"} horizontal={false}>
-        <Button className={styles.btns} type="primary">
+        <Button className={styles.btns} style={{borderRadius:"10px"}} type="primary">
           شروع کار
         </Button>
-        <Button className={styles.btns} type="default" icon={<Book />}>
+        <Button className={styles.btns} style={{borderRadius:"10px"}} icon={<Book />}>
           کشف تمام قابلیت‌ ها
         </Button>
       </Flexbox>

@@ -106,29 +106,32 @@ const Features = () => {
     >
       <Banner />
       <FeatureText />
-      <Divider style={{ margin: "44px 0 48px 0" }} />
+      <Divider style={{ margin: "48px 0" }} />
       <Partner
         items={firstPartner}
         title="همراه هوشمند شما"
         content="هر زمان و هر مکان، با رابطی کاربرپسند و همراهان هوشمند، همصحبتهای
         دیجیتال خود را بسازید و تغییر دهید."
+        priority="first"
       />
-      <Divider style={{ margin: "44px 0 48px 0" }} />
+      <Divider style={{ margin: "48px 0" }} />
       <Partner
         items={secondPartner}
         title="حسی"
         content="با برترین مدل‌های زبانی جهانی ارتباط برقرار کنید تا دستیار هوشمندتان را با افزونه‌ها و پایگاه‌های دانش ارتقا دهید و هر تعامل را پربارتر سازید."
+        priority="second"
       />
-      <Divider style={{ margin: "44px 0 48px 0" }} />
+      <Divider style={{ margin: "48px 0" }} />
       <Partner
         items={thirdPartner}
         title="تکامل"
         content="به مدل‌های زبانی پیشرفته جهانی متصل شوید تا دستیار هوشمند خود را با افزونه‌ها و پایگاه‌های دانش ارتقا دهید و هر تعامل را غنی‌تر سازید."
+        priority="third"
       />
-      <Divider style={{ margin: "44px 0 48px 0" }} />
+      <Divider style={{ margin: "48px 0" }} />
 
       <Creative />
-      <Divider style={{ margin: "44px 0 48px 0" }} />
+      <Divider style={{ margin: "48px 0" }} />
       <Explor />
     </Flexbox>
   );

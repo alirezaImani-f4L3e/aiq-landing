@@ -12,14 +12,36 @@ const useStyles = createStyles(({ css, responsive }) => ({
     border: 1px solid #0c0c0c;
     border-radius: 16px;
     background-color: #0d0d0d;
-    position:relative;
-    padding:0 0 40px 0
-    `,
-    
-    image: css`
+    position: relative;
+    padding: 0 0 40px 0;
+  `,
+
+  image: css`
     width: 100%;
     height: 150px;
     border-radius: 16px;
+  `,
+  moreButton: css`
+    height: "36px";
+    background-color: "#ffffff1A";
+    color: "white";
+    text-align: "center";
+    display: "flex";
+    flex-shrink: 0;
+    justify-content: "center";
+    align-items: "center";
+    border-radius: "6px";
+    cursor: "pointer";
+    position: "absolute";
+    bottom: "10px";
+    left: "10px";
+    right: "10px";
+    opacity: 0.7;
+    transition: all 0.5s ease;
+
+    &:hover {
+      opacity: 1;
+    }
   `,
 }));
 
@@ -39,7 +61,7 @@ const Box = ({ item }: boxPropsTypes) => {
       <Flexbox
         style={{
           width: "100%",
-          padding:"10px",
+          padding: "10px",
         }}
       >
         <Flexbox>
@@ -59,7 +81,9 @@ const Box = ({ item }: boxPropsTypes) => {
           </span>
         </Flexbox>
 
-        <div onClick={() => console.log(item.id)}
+        <div
+          onClick={() => console.log(item.id)}
+          className={styles.moreButton}
           style={{
             height: "36px",
             backgroundColor: "#ffffff1A",
@@ -71,10 +95,10 @@ const Box = ({ item }: boxPropsTypes) => {
             alignItems: "center",
             borderRadius: "6px",
             cursor: "pointer",
-            position:"absolute",
-            bottom:"10px",
-            left:"10px",
-            right:"10px",
+            position: "absolute",
+            bottom: "10px",
+            left: "10px",
+            right: "10px",
           }}
         >
           بیشتر
