@@ -1,11 +1,11 @@
 "use client";
 
 import { Flexbox } from "react-layout-kit";
-import BlogBox from "./blogBox";
-import { Grid, GridProps } from "@lobehub/ui";
-import PostBox from "./postBox";
+import BlogBox from "../blogBox";
+import { Grid } from "@lobehub/ui";
+import PostBox from "../postBox";
 import { createStyles } from "antd-style";
-import Explor from "../features/explor";
+import Explor from "../../features/explor";
 import { Divider } from "antd";
 
 const useStyles = createStyles(({ css, responsive }) => ({
@@ -33,7 +33,7 @@ const useStyles = createStyles(({ css, responsive }) => ({
   `,
 }));
 
-const Blog = () => {
+const CompanyBlog = () => {
   const { styles } = useStyles();
 
   return (
@@ -41,36 +41,9 @@ const Blog = () => {
       horizontal={false}
       style={{ maxWidth: "1200px", display: "flex", margin: "0 auto" }}
     >
-      <BlogBox title="پست ها"/>
 
-      <h1 className={styles.titleHead}>آخرین ها</h1>
+      <h1 className={styles.titleHead}>اخبار شرکت</h1>
       <Grid className={styles.gridPostBox} gap={24}>
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
-        <PostBox />
         <PostBox />
         <PostBox />
       </Grid>
@@ -82,4 +55,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default CompanyBlog;

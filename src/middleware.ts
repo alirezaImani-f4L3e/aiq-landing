@@ -12,6 +12,10 @@ export const config = {
         '/pricing',
         '/features',
         '/blog',
+        '/community',
+        '/company',
+        '/engineering',
+        '/product',
     ]
 }
 

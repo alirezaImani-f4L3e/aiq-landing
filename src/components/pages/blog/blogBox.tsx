@@ -165,13 +165,16 @@ const useStyles = createStyles(({ css, responsive }) => ({
   `,
 }));
 
-const BlogBox = () => {
+type BlogBoxPropsTypes = {
+  title:string;
+}
+const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
   const { styles } = useStyles();
 
   return (
     <div style={{ maxWidth: "1200px", display: "flex", margin: "0 auto" }}>
       <div className="">
-        <h1 className={styles.title}>همه پست ها</h1>
+        <h1 className={styles.title}>{title}</h1>
 
         <Grid className={styles.mainGrid}>
           <Flexbox className={styles.chatsAi}>
