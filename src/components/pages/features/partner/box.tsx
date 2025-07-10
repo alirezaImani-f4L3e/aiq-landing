@@ -1,19 +1,28 @@
-import { Image } from "@lobehub/ui";
+import { Avatar, Image } from "@lobehub/ui";
 import { Flexbox } from "react-layout-kit";
 import { PartnerItem } from "..";
 import { createStyles } from "antd-style";
+import { Spotlight, SpotlightCard } from "@lobehub/ui/awesome";
 
 interface boxPropsTypes {
   item: PartnerItem;
 }
-
-const useStyles = createStyles(({ css, responsive }) => ({
-  wrapper: css`
-    border: 1px solid #0c0c0c;
+{
+  /*
+   border: 1px solid #0c0c0c;
     border-radius: 16px;
     background-color: #0d0d0d;
     position: relative;
+  */
+}
+const useStyles = createStyles(({ css, token }) => ({
+  wrapper: css`
     padding: 0 0 40px 0;
+    position: relative;
+    width: 100%;
+    background: ${token.colorBgLayout};
+    border: 1px solid ${token.colorBorder};
+    border-radius: ${token.borderRadius}px;
   `,
 
   image: css`
@@ -50,12 +59,14 @@ const Box = ({ item }: boxPropsTypes) => {
 
   return (
     <div className={styles.wrapper}>
+      <Spotlight size={256} />
       <div className={styles.image}>
         <Image
           style={{ width: "100%", height: "100%" }}
           src={item.image}
           alt="box-image"
           variant="borderless"
+          preview={false}
         />
       </div>
       <Flexbox

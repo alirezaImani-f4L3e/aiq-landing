@@ -10,7 +10,8 @@ export const config = {
         '/api(.*)',
         '/',
         '/pricing',
-        '/features'
+        '/features',
+        // '/blog',
     ]
 }
 
