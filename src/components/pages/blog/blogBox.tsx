@@ -15,7 +15,7 @@ const useStyles = createStyles(({ css, responsive }) => ({
       height: 100vh;
       }
       ${responsive.mobile} {
-        height: 120vh;
+        height: 140vh;
       grid-template-columns: 1fr;
     }
   `,
@@ -52,6 +52,9 @@ const useStyles = createStyles(({ css, responsive }) => ({
   openAiSubContent: css`
     width: 100%;
     padding: 0 16px 16px 16px;
+    margin-top:-40px;
+    background-color:rgba(0,0,0,1);
+    z-index:4;
   `,
   openAiAvatar: css`
     width: 24px;
@@ -105,6 +108,9 @@ const useStyles = createStyles(({ css, responsive }) => ({
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
+     border: 1px solid #1a1a1a;
+    border-radius: 16px;
+    overflow: hidden;
 
     ${responsive.tablet} {
       grid-template-columns: 1fr 1fr;
@@ -153,16 +159,16 @@ const useStyles = createStyles(({ css, responsive }) => ({
       height: 160px;
     }
   `,
-  chatsAiGemini: css`
-    border: 1px solid #1a1a1a;
-    border-radius: 16px;
-    overflow: hidden;
-  `,
-  chatsAiDeep: css`
-    border: 1px solid #1a1a1a;
-    border-radius: 16px;
-    overflow: hidden;
-  `,
+  // chatsAiGemini: css`
+  //   border: 1px solid #1a1a1a;
+  //   border-radius: 16px;
+  //   overflow: hidden;
+  // `,
+  // chatsAiDeep: css`
+  //   border: 1px solid #1a1a1a;
+  //   border-radius: 16px;
+  //   overflow: hidden;
+  // `,
 }));
 
 type BlogBoxPropsTypes = {
@@ -178,7 +184,7 @@ const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
 
         <Grid className={styles.mainGrid}>
           <Flexbox className={styles.chatsAi}>
-            <div className={styles.chatsAiGemini}>
+            {/* <div className={styles.chatsAiGemini}> */}
               <Image
                 className={styles.chatImage}
                 preview={false}
@@ -210,9 +216,9 @@ const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
                   </Flexbox>
                 </Flexbox>
               </div>
-            </div>
+            {/* </div> */}
 
-            <div className={styles.chatsAiDeep}>
+            {/* <div className={styles.chatsAiDeep}> */}
               <Image
                 className={styles.chatImage}
                 preview={false}
@@ -239,7 +245,7 @@ const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
                   </Flexbox>
                 </Flexbox>
               </div>
-            </div>
+            {/* </div> */}
           </Flexbox>
 
           {/************************* Left Side ********************************/}
