@@ -48,9 +48,9 @@ const CompanyBlog = () => {
         <PostBox />
       </Grid>
 
-      <Divider style={{ margin: "78px 0 48px 0" }} />
+      {/* <Divider style={{ margin: "78px 0 48px 0" }} />
 
-      <Explor />
+      <Explor /> */}
     </Flexbox>
   );
 };

@@ -1,3 +1,4 @@
+"use client";
 import { Github } from "@lobehub/icons";
 import { Button } from "@lobehub/ui";
 import { createStyles } from "antd-style";

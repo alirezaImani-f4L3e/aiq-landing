@@ -1,11 +1,11 @@
 "use client";
 
 import { Flexbox } from "react-layout-kit";
-import BlogBox from "./blogBox";
+import BlogBox from "../blogBox";
 import { Grid, Menu } from "@lobehub/ui";
-import PostBox from "./postBox";
+import PostBox from "../postBox";
 import { createStyles } from "antd-style";
-import Explor from "../features/explor";
+import Explor from "../../features/explor";
 import { Divider } from "antd";
 import Link from "next/link";
 
@@ -36,36 +36,36 @@ const useStyles = createStyles(({ css, responsive }) => ({
 
 const Blog = () => {
   const { styles } = useStyles();
-  const items = [
-    {
-      key: "post",
-      label: <Link href="/blog">همه پست ها</Link>,
-    },
-    {
-      key: "Product",
-      label: <Link href="/product">محصول</Link>,
-    },
-    {
-      key: "Community",
-      label: <Link href="/community">اجتماع</Link>,
-    },
-    {
-      key: "Engineering",
-      label: <Link href="/engineering">مهندسی</Link>,
-    },
-    {
-      key: "Company",
-      label: <Link href="/company">اخبار شرکت</Link>,
-    },
-  ];
+  // const items = [
+  //   {
+  //     key: "post",
+  //     label: <Link href="/blog">همه پست ها</Link>,
+  //   },
+  //   {
+  //     key: "Product",
+  //     label: <Link href="/product">محصول</Link>,
+  //   },
+  //   {
+  //     key: "Community",
+  //     label: <Link href="/community">اجتماع</Link>,
+  //   },
+  //   {
+  //     key: "Engineering",
+  //     label: <Link href="/engineering">مهندسی</Link>,
+  //   },
+  //   {
+  //     key: "Company",
+  //     label: <Link href="/company">اخبار شرکت</Link>,
+  //   },
+  // ];
   return (
     <Flexbox
       horizontal={false}
       style={{ maxWidth: "1200px", display: "flex", margin: "0 auto" }}
     >
-      <Flexbox width={"100%"} style={{ margin: "100px 0 20px 0" }}>
+      {/* <Flexbox width={"100%"} style={{ margin: "100px 0 20px 0" }}>
         <Menu mode="horizontal" items={items} />
-      </Flexbox>
+      </Flexbox> */}
 
       <BlogBox title="پست ها" />
 
@@ -101,9 +101,9 @@ const Blog = () => {
         <PostBox />
       </Grid>
 
-      <Divider style={{ margin: "78px 0 48px 0" }} />
+      {/* <Divider style={{ margin: "78px 0 48px 0" }} />
 
-      <Explor />
+      <Explor /> */}
     </Flexbox>
   );
 };

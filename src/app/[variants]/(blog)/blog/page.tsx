@@ -1,7 +1,12 @@
-import Blog from "@/components/pages/blog";
+import Blog from "@/components/pages/blog/blog";
+import Template from "../blogLayout/layout";
 
 const BlogPage = () => {
-  return <Blog />;
+  return (
+    <Template>
+      <Blog />
+    </Template>
+  );
 };
 
 export default BlogPage;

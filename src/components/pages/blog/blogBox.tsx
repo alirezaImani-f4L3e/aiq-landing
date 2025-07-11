@@ -2,6 +2,7 @@
 import { Grid, Image, Text } from "@lobehub/ui";
 import { createStyles } from "antd-style";
 import { Flexbox } from "react-layout-kit";
+import { Avatar, type AvatarGroupProps } from '@lobehub/ui';
 
 const useStyles = createStyles(({ css, responsive }) => ({
   mainGrid: css`
@@ -176,6 +177,15 @@ type BlogBoxPropsTypes = {
 }
 const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
   const { styles } = useStyles();
+const url = "/images/blog/tc.webp";
+
+  const items: AvatarGroupProps['items'] = Array.from({ length: 1 }, (_, index) => {
+    return {
+      avatar: url,
+      key: String(index),
+      title: 'CanisMinor',
+    };
+  });
 
   return (
     <div style={{ maxWidth: "1200px", display: "flex", margin: "0 auto" }}>
@@ -213,7 +223,8 @@ const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
 
                   <Flexbox className="" horizontal gap={16} align="center">
                     <span className={styles.openAiAvatarTitle}>TC</span>
-                    <div className={styles.openAiAvatar}></div>
+                     <Avatar.Group size={24} items={items} onClick={console.log} />
+                    {/* <div className={styles.openAiAvatar}></div> */}
                   </Flexbox>
                 </Flexbox>
               </div>
@@ -243,7 +254,8 @@ const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
 
                   <Flexbox className="" horizontal gap={16} align="center">
                     <span className={styles.openAiAvatarTitle}>TC</span>
-                    <div className={styles.openAiAvatar}></div>
+                    {/* <div className={styles.openAiAvatar}></div> */}
+                    <Avatar.Group size={24} items={items} onClick={console.log} />
                   </Flexbox>
                 </Flexbox>
               </div>
@@ -280,7 +292,8 @@ const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
 
                 <Flexbox className="" horizontal gap={16} align="center">
                   <span className={styles.openAiAvatarTitle}>Arvin Xu</span>
-                  <div className={styles.openAiAvatar}></div>
+                  {/* <div className={styles.openAiAvatar}></div> */}
+                  <Avatar.Group size={24} items={items} onClick={console.log} />
                 </Flexbox>
               </Flexbox>
             </div>

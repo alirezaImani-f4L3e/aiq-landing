@@ -1,7 +1,12 @@
 import CompanyBlog from "@/components/pages/blog/company";
+import Template from "../blogLayout/layout";
 
 const CompanyPage = () => {
-  return <div><CompanyBlog /></div>;
+  return (
+    <Template>
+      <CompanyBlog />
+    </Template>
+  );
 };
 
 export default CompanyPage;

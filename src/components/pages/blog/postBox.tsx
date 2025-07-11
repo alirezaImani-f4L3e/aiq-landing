@@ -2,6 +2,7 @@
 import { Flexbox } from "react-layout-kit";
 import { Text } from "@lobehub/ui";
 import { createStyles } from "antd-style";
+import { Avatar, type AvatarGroupProps } from '@lobehub/ui';
 
 const useSyles = createStyles(({ css }) => ({
   tagName: css`
@@ -36,6 +37,17 @@ const useSyles = createStyles(({ css }) => ({
 const PostBox = () => {
   const { styles } = useSyles();
 
+  // const url = 'https://avatars.githubusercontent.com/u/17870709?v=4';
+  const url = "/images/blog/tc.webp";
+
+  const items: AvatarGroupProps['items'] = Array.from({ length: 2 }, (_, index) => {
+    return {
+      avatar: url,
+      key: String(index),
+      title: 'CanisMinor',
+    };
+  });
+
   return (
       <Flexbox horizontal={false}>
         <span className={styles.tagName}>مهندسی</span>
@@ -48,9 +60,10 @@ const PostBox = () => {
           این مقاله به صورت نظام‌مند به بررسی این موضوع می‌پردازد که چگونه
         </Text>
 
-        <Flexbox horizontal align="center" gap={16}>
+        <Flexbox horizontal align="center" gap={16} >
           <span className={styles.datePaper}>Jun 19, 2025</span>
-          <div className={styles.avatar}></div>
+          {/* <div className={styles.avatar}></div> */}
+          <Avatar.Group size={24} items={items} onClick={console.log} />
         </Flexbox>
       </Flexbox>
   );
