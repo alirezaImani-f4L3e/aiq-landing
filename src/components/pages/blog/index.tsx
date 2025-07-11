@@ -2,11 +2,12 @@
 
 import { Flexbox } from "react-layout-kit";
 import BlogBox from "./blogBox";
-import { Grid, GridProps } from "@lobehub/ui";
+import { Grid, Menu } from "@lobehub/ui";
 import PostBox from "./postBox";
 import { createStyles } from "antd-style";
 import Explor from "../features/explor";
 import { Divider } from "antd";
+import Link from "next/link";
 
 const useStyles = createStyles(({ css, responsive }) => ({
   gridPostBox: css`
@@ -35,13 +36,38 @@ const useStyles = createStyles(({ css, responsive }) => ({
 
 const Blog = () => {
   const { styles } = useStyles();
-
+  const items = [
+    {
+      key: "post",
+      label: <Link href="/blog">همه پست ها</Link>,
+    },
+    {
+      key: "Product",
+      label: <Link href="/product">محصول</Link>,
+    },
+    {
+      key: "Community",
+      label: <Link href="/community">اجتماع</Link>,
+    },
+    {
+      key: "Engineering",
+      label: <Link href="/engineering">مهندسی</Link>,
+    },
+    {
+      key: "Company",
+      label: <Link href="/company">اخبار شرکت</Link>,
+    },
+  ];
   return (
     <Flexbox
       horizontal={false}
       style={{ maxWidth: "1200px", display: "flex", margin: "0 auto" }}
     >
-      <BlogBox title="پست ها"/>
+      <Flexbox width={"100%"} style={{ margin: "100px 0 20px 0" }}>
+        <Menu mode="horizontal" items={items} />
+      </Flexbox>
+
+      <BlogBox title="پست ها" />
 
       <h1 className={styles.titleHead}>آخرین ها</h1>
       <Grid className={styles.gridPostBox} gap={24}>

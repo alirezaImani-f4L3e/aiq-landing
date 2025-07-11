@@ -52,7 +52,7 @@ const useStyles = createStyles(({ css, responsive }) => ({
   openAiSubContent: css`
     width: 100%;
     padding: 0 16px 16px 16px;
-    margin-top:-40px;
+    margin-top:0px;
     background-color:rgba(0,0,0,1);
     z-index:4;
   `,
@@ -185,6 +185,7 @@ const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
         <Grid className={styles.mainGrid}>
           <Flexbox className={styles.chatsAi}>
             {/* <div className={styles.chatsAiGemini}> */}
+            <div>
               <Image
                 className={styles.chatImage}
                 preview={false}
@@ -216,9 +217,10 @@ const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
                   </Flexbox>
                 </Flexbox>
               </div>
-            {/* </div> */}
+            </div>
 
             {/* <div className={styles.chatsAiDeep}> */}
+            <div>
               <Image
                 className={styles.chatImage}
                 preview={false}
@@ -245,7 +247,7 @@ const BlogBox:React.FC<BlogBoxPropsTypes> = ({title}) => {
                   </Flexbox>
                 </Flexbox>
               </div>
-            {/* </div> */}
+            </div>
           </Flexbox>
 
           {/************************* Left Side ********************************/}

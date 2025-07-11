@@ -41,7 +41,7 @@ const CommunityBlog = () => {
       horizontal={false}
       style={{ maxWidth: "1200px", display: "flex", margin: "0 auto" }}
     >
-      <BlogBox title="جامعه"/>
+      <BlogBox title="اجتماع"/>
 
       <h1 className={styles.titleHead}>آخرین ها</h1>
       <Grid className={styles.gridPostBox} gap={24}>
