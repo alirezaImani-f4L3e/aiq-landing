@@ -6,7 +6,7 @@ import { Grid, Menu } from "@lobehub/ui";
 import PostBox from "../postBox";
 import { createStyles } from "antd-style";
 import Explor from "../../features/explor";
-import { Divider } from "antd";
+import { Divider, Typography } from "antd";
 import Link from "next/link";
 
 const useStyles = createStyles(({ css, responsive }) => ({
@@ -36,40 +36,16 @@ const useStyles = createStyles(({ css, responsive }) => ({
 
 const Blog = () => {
   const { styles } = useStyles();
-  // const items = [
-  //   {
-  //     key: "post",
-  //     label: <Link href="/blog">همه پست ها</Link>,
-  //   },
-  //   {
-  //     key: "Product",
-  //     label: <Link href="/product">محصول</Link>,
-  //   },
-  //   {
-  //     key: "Community",
-  //     label: <Link href="/community">اجتماع</Link>,
-  //   },
-  //   {
-  //     key: "Engineering",
-  //     label: <Link href="/engineering">مهندسی</Link>,
-  //   },
-  //   {
-  //     key: "Company",
-  //     label: <Link href="/company">اخبار شرکت</Link>,
-  //   },
-  // ];
+  const { Title } = Typography;
+
   return (
     <Flexbox
       horizontal={false}
       style={{ maxWidth: "1200px", display: "flex", margin: "0 auto" }}
     >
-      {/* <Flexbox width={"100%"} style={{ margin: "100px 0 20px 0" }}>
-        <Menu mode="horizontal" items={items} />
-      </Flexbox> */}
-
       <BlogBox title="پست ها" />
 
-      <h1 className={styles.titleHead}>آخرین ها</h1>
+      <Title level={2} className={styles.titleHead}>آخرین ها</Title>
       <Grid className={styles.gridPostBox} gap={24}>
         <PostBox />
         <PostBox />
@@ -100,10 +76,6 @@ const Blog = () => {
         <PostBox />
         <PostBox />
       </Grid>
-
-      {/* <Divider style={{ margin: "78px 0 48px 0" }} />
-
-      <Explor /> */}
     </Flexbox>
   );
 };

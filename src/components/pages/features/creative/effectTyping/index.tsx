@@ -96,8 +96,7 @@ const EffectTyping: React.FC<EffectPropsTypes> = ({ speed, text }) => {
 
   const { Paragraph } = Typography;
   return (
-    <Center ref={containerRef} style={{width:"100%"}}>
-
+    <Center ref={containerRef} style={{ width: "100%" }}>
       <Flexbox
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
@@ -108,9 +107,7 @@ const EffectTyping: React.FC<EffectPropsTypes> = ({ speed, text }) => {
         gap={"16px"}
       >
         {showTooltip && (
-          <Paragraph className={styles.tooltipButton}>
-            {tehranTime}
-          </Paragraph>
+          <Paragraph className={styles.tooltipButton}>{tehranTime}</Paragraph>
         )}
 
         <Center className={styles.textbox}>
@@ -130,6 +127,7 @@ const EffectTyping: React.FC<EffectPropsTypes> = ({ speed, text }) => {
           style={{ width: "32px", height: "32px", borderRadius: "200px" }}
           decoding="async"
           data-nimg="1"
+          preview={false}
           src="https://registry.npmmirror.com/@lobehub/fluent-emoji-3d/latest/files/assets/1f9d1-200d-1f3a8.webp"
         />
       </Flexbox>

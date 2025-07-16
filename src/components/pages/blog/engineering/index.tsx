@@ -6,7 +6,7 @@ import { Grid } from "@lobehub/ui";
 import PostBox from "../postBox";
 import { createStyles } from "antd-style";
 import Explor from "../../features/explor";
-import { Divider } from "antd";
+import { Divider, Typography } from "antd";
 
 const useStyles = createStyles(({ css, responsive }) => ({
   gridPostBox: css`
@@ -35,6 +35,7 @@ const useStyles = createStyles(({ css, responsive }) => ({
 
 const EngineeringBlog = () => {
   const { styles } = useStyles();
+  const { Title } = Typography;
 
   return (
     <Flexbox
@@ -43,7 +44,7 @@ const EngineeringBlog = () => {
     >
       <BlogBox title="مهندسی"/>
 
-      <h1 className={styles.titleHead}>آخرین ها</h1>
+      <Title level={2} className={styles.titleHead}>آخرین ها</Title>
       <Grid className={styles.gridPostBox} gap={24}>
         <PostBox />
         <PostBox />
@@ -74,10 +75,6 @@ const EngineeringBlog = () => {
         <PostBox />
         <PostBox />
       </Grid>
-
-      {/* <Divider style={{ margin: "78px 0 48px 0" }} />
-
-      <Explor /> */}
     </Flexbox>
   );
 };
