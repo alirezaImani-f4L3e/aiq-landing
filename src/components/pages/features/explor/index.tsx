@@ -1,8 +1,10 @@
 "use client";
 import { Github } from "@lobehub/icons";
-import { Button } from "@lobehub/ui";
+import { Button, Text } from "@lobehub/ui";
+import { Typography } from "antd";
 import { createStyles } from "antd-style";
-import { Flexbox } from "react-layout-kit";
+import { useTranslation } from "react-i18next";
+import { Center, Flexbox } from "react-layout-kit";
 
 const useStyle = createStyles(({ css, responsive }) => ({
   wrapper: css`
@@ -109,22 +111,19 @@ const useStyle = createStyles(({ css, responsive }) => ({
 }));
 
 const Explor = () => {
+  const { t } = useTranslation("features");
   const { styles } = useStyle();
+  const { Paragraph } = Typography;
 
   return (
-    <div className={styles.wrapper}>
+    <Center className={styles.wrapper}>
       <Flexbox horizontal={false}>
-        <span className={styles.title}>
-          کارآیی فردی را فعال کنید
-          <span className={styles.animationText}>
-            شور آفرینش را دوباره کشف نمایید.
-          </span>
-        </span>
+        <Text className={styles.title} style={{ marginBottom: "30px" }}>
+          {t("explor.title")}
+          <Text className={styles.animationText}>{t("explor.subTitle")}</Text>
+        </Text>
 
-        <p className={styles.content}>
-          اکوسیستم غنی دستیاران هوشمند را کاوش کنید و به سادگی گردش کار ایده‌آل
-          خود را تنظیم نمایید. با LobeChat شگفتی‌ها خواهید آفرید.
-        </p>
+        <Paragraph className={styles.content}>{t("explor.content")}</Paragraph>
       </Flexbox>
 
       <Flexbox gap={"20px"}>
@@ -132,13 +131,13 @@ const Explor = () => {
           style={{ width: "200px", height: "45px", fontSize: "16px" }}
           type="primary"
         >
-          نسخه آزمایشی
+          {t("explor.freeTrial")}
         </Button>
         <Button className={styles.githubBtn} type="default" icon={<Github />}>
-          گیت هاب
+          {t("explor.gitHub")}
         </Button>
       </Flexbox>
-    </div>
+    </Center>
   );
 };
 

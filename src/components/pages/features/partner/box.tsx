@@ -1,20 +1,14 @@
-import { Avatar, Image } from "@lobehub/ui";
-import { Flexbox } from "react-layout-kit";
+import { Button, Image } from "@lobehub/ui";
+import { Center, Flexbox } from "react-layout-kit";
 import { PartnerItem } from "..";
 import { createStyles } from "antd-style";
-import { Spotlight, SpotlightCard } from "@lobehub/ui/awesome";
+import { Spotlight } from "@lobehub/ui/awesome";
+import { Typography } from "antd";
 
 interface boxPropsTypes {
   item: PartnerItem;
 }
-{
-  /*
-   border: 1px solid #0c0c0c;
-    border-radius: 16px;
-    background-color: #0d0d0d;
-    position: relative;
-  */
-}
+
 const useStyles = createStyles(({ css, token }) => ({
   wrapper: css`
     padding: 0 0 40px 0;
@@ -56,11 +50,12 @@ const useStyles = createStyles(({ css, token }) => ({
 
 const Box = ({ item }: boxPropsTypes) => {
   const { styles } = useStyles();
+  const { Title, Paragraph } = Typography;
 
   return (
-    <div className={styles.wrapper}>
+    <Center className={styles.wrapper}>
       <Spotlight size={256} />
-      <div className={styles.image}>
+      <Center className={styles.image}>
         <Image
           style={{ width: "100%", height: "100%" }}
           src={item.image}
@@ -68,7 +63,7 @@ const Box = ({ item }: boxPropsTypes) => {
           variant="borderless"
           preview={false}
         />
-      </div>
+      </Center>
       <Flexbox
         style={{
           width: "100%",
@@ -76,10 +71,10 @@ const Box = ({ item }: boxPropsTypes) => {
         }}
       >
         <Flexbox>
-          <span style={{ fontSize: "18px", fontWeight: "bold" }}>
+          <Title level={3} style={{ fontSize: "18px", fontWeight: "bold" }}>
             {item.title}
-          </span>
-          <span
+          </Title>
+          <Paragraph
             style={{
               fontSize: "16px",
               fontWeight: "bold",
@@ -89,10 +84,10 @@ const Box = ({ item }: boxPropsTypes) => {
             }}
           >
             {item.content}
-          </span>
+          </Paragraph>
         </Flexbox>
 
-        <div
+        <Button
           onClick={() => console.log(item.id)}
           className={styles.moreButton}
           style={{
@@ -113,9 +108,9 @@ const Box = ({ item }: boxPropsTypes) => {
           }}
         >
           بیشتر
-        </div>
+        </Button>
       </Flexbox>
-    </div>
+    </Center>
   );
 };
 

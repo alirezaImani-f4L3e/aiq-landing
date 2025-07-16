@@ -1,8 +1,9 @@
 import { Flexbox } from "react-layout-kit";
 import { Typography } from "antd";
 import { createStyles } from "antd-style";
-import { Button } from "@lobehub/ui";
+import { Button, Text } from "@lobehub/ui";
 import { Book } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const useStyles = createStyles(({ css, responsive }) => ({
   wrapper: css`
@@ -28,7 +29,7 @@ const useStyles = createStyles(({ css, responsive }) => ({
     align-items: center;
     font-weight: bold;
     font-style: italic;
-    line-height:1.2;
+    line-height: 1.2;
 
     ${responsive.mobile} {
       font-size: 32px;
@@ -61,28 +62,40 @@ const useStyles = createStyles(({ css, responsive }) => ({
 
 const FeatureText: React.FC = () => {
   const { styles } = useStyles();
+  const { Title, Paragraph } = Typography;
+  const { t } = useTranslation("features");
 
   return (
     <Flexbox className={styles.wrapper}>
-      <span className={styles.title}>ویژگی ها</span>
-      <div className={styles.subTitle}>
-        <span style={{ textAlign: "center" }}>در خط مقدم نوآوری بمانید و</span>
-        <span style={{ textAlign: "center" }}>
-          تجربیات چندوجهی را به آغوش بکشید.
-        </span>
-      </div>
-      <span className={styles.paragh}>
-        با نگاهی به آینده، LobeChat همچنان به رصد فناوری‌های پیشرفته ادامه
-        می‌دهد و از انواع تعاملات از جمله صدا، تصویر و غیره پشتیبانی می‌کند تا
-        سناریوهای کاربریِ بصری‌تر، راحت‌تر و جذاب‌تری بسازد.
-      </span>
+      <Title level={3} className={styles.title}>
+        {t("featureText.title")}
+      </Title>
+      <Flexbox className={styles.subTitle}>
+        <Text style={{ textAlign: "center" }}>
+          {t("featureText.subTitle1")}
+        </Text>
+        <Text style={{ textAlign: "center" }}>
+          {t("featureText.subTitle2")}
+        </Text>
+      </Flexbox>
+      <Paragraph className={styles.paragh}>
+        {t("featureText.content")}
+      </Paragraph>
 
       <Flexbox style={{ padding: "0 16px" }} gap={"15px"} horizontal={false}>
-        <Button className={styles.btns} style={{borderRadius:"10px"}} type="primary">
-          شروع کار
+        <Button
+          className={styles.btns}
+          style={{ borderRadius: "10px" }}
+          type="primary"
+        >
+          {t("featurText.getStart")}
         </Button>
-        <Button className={styles.btns} style={{borderRadius:"10px"}} icon={<Book />}>
-          کشف تمام قابلیت‌ ها
+        <Button
+          className={styles.btns}
+          style={{ borderRadius: "10px" }}
+          icon={<Book />}
+        >
+         {t("featurText.allFeatures")}
         </Button>
       </Flexbox>
     </Flexbox>
