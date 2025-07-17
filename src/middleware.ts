@@ -6,63 +6,68 @@ import { RouteVariants } from "./utils/server/routeVariants";
 import { notFound } from "next/navigation";
 
 export const config = {
-    matcher: [
-        '/api(.*)',
-        '/',
-        '/pricing',
-        '/features',
-        '/blog',
-        '/community',
-        '/company',
-        '/engineering',
-        '/product',
-    ]
-}
+  matcher: [
+    "/api(.*)",
+    "/",
+    "/pricing",
+    "/features",
+    "/blog",
+    "/community",
+    "/company",
+    "/engineering",
+    "/product",
+    "/blog/category/community",
+    "/blog/category/company",
+    "/blog/category/engineering",
+    "/blog/category/product",
+  ],
+};
 
-const parseDefaultThemeFromTime = (request: NextRequest) => { // we will use it in near future
-    const longitude = 'geo' in request && (request.geo as any)?.longitude
+const parseDefaultThemeFromTime = (request: NextRequest) => {
+  // we will use it in near future
+  const longitude = "geo" in request && (request.geo as any)?.longitude;
 
-    if (typeof longitude === "number") {
-        const offsetHours = Math.round(longitude / 15);
+  if (typeof longitude === "number") {
+    const offsetHours = Math.round(longitude / 15);
 
-        const localHour = (new Date().getUTCHours() + offsetHours + 24) / 24;
+    const localHour = (new Date().getUTCHours() + offsetHours + 24) / 24;
 
-        return (localHour > 6) && (localHour < 18) ? 'light' : 'dark';
-    }
+    return localHour > 6 && localHour < 18 ? "light" : "dark";
+  }
 
-    return 'light';
-}
+  return "light";
+};
 
 const defaultMiddleware = (request: NextRequest) => {
-    // const theme = request.cookies.get(AIQ_THEME_APPEARANCE)?.value || parseDefaultThemeFromTime(request);
+  // const theme = request.cookies.get(AIQ_THEME_APPEARANCE)?.value || parseDefaultThemeFromTime(request);
 
-    const theme = 'dark';
+  const theme = "dark";
 
-    const locale = parseBrowserLanguage();
+  const locale = parseBrowserLanguage();
 
-    const ua = request.headers.get("user-agent");
+  const ua = request.headers.get("user-agent");
 
-    const device = new UAParser(ua || '').getDevice();
+  const device = new UAParser(ua || "").getDevice();
 
-    const variantRoute = RouteVariants.serializeVariants({
-        isMobile: device.type === "mobile",
-        locale,
-        theme
-    })
+  const variantRoute = RouteVariants.serializeVariants({
+    isMobile: device.type === "mobile",
+    locale,
+    theme,
+  });
 
-    const url = new URL(request.url);
-    if (['/api'].some((path) => url.pathname.startsWith(path))) {
-        return NextResponse.next();
-    }
+  const url = new URL(request.url);
+  if (["/api"].some((path) => url.pathname.startsWith(path))) {
+    return NextResponse.next();
+  }
 
-    const newRoute = `/${variantRoute}${url.pathname === "/" ? '' : url.pathname}`;
-    console.log(`[rewrite] ${url.pathname} -> ${newRoute}`);
+  const newRoute = `/${variantRoute}${
+    url.pathname === "/" ? "" : url.pathname
+  }`;
+  console.log(`[rewrite] ${url.pathname} -> ${newRoute}`);
 
+  url.pathname = newRoute;
 
-    url.pathname = newRoute;
-
-    return NextResponse.rewrite(url, { status: 200 })
-}
-
+  return NextResponse.rewrite(url, { status: 200 });
+};
 
 export default defaultMiddleware;

@@ -3,60 +3,69 @@ import Explor from "@/components/pages/features/explor";
 import { Menu } from "@lobehub/ui";
 import { Divider } from "antd";
 import Link from "next/link";
-import { Flexbox } from "react-layout-kit";
 import { usePathname } from "next/navigation";
-import { ThemeSwitch } from "@lobehub/ui";
-import { type ThemeMode } from "antd-style";
-import { useState } from "react";
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 
 interface TemplateProps {
   children: ReactNode;
 }
 export default function Template({ children }: TemplateProps) {
+  const { t } = useTranslation("blog");
+
   const items = [
     {
       key: "/blog",
-      label: <Link href="/blog">همه پست ها</Link>,
+      label: <Link href="/blog">{t("pageLayout.menu.allPosts")}</Link>,
     },
     {
-      key: "/product",
-      label: <Link href="/product">محصول</Link>,
+      key: "/blog/category/product",
+      label: (
+        <Link href="/blog/category/product">
+          {t("pageLayout.menu.product")}
+        </Link>
+      ),
     },
     {
-      key: "/community",
-      label: <Link href="/community">اجتماع</Link>,
+      key: "/blog/category/community",
+      label: (
+        <Link href="/blog/category/community">
+          {t("pageLayout.menu.community")}
+        </Link>
+      ),
     },
     {
-      key: "/engineering",
-      label: <Link href="/engineering">مهندسی</Link>,
+      key: "/blog/category/engineering",
+      label: (
+        <Link href="/blog/category/engineering">
+          {t("pageLayout.menu.engineer")}
+        </Link>
+      ),
     },
     {
-      key: "/company",
-      label: <Link href="/company">اخبار شرکت</Link>,
+      key: "/blog/category/company",
+      label: (
+        <Link href="/blog/category/company">
+          {t("pageLayout.menu.company")}
+        </Link>
+      ),
     },
   ];
 
-  const [themeMode, setThemeMode] = useState<ThemeMode>("auto");
   const pathname = usePathname();
-  const selectedKey =
-    items.find((item) => pathname.startsWith(item.key))?.key || "";
+
+  const selectedKey = items.find((item) => pathname == item.key)?.key || "";
   return (
     <div
       className="special-template"
       style={{ maxWidth: "1200px", margin: "0 auto" }}
     >
-      <Flexbox
-        width={"100%"}
+      <Menu
         style={{ margin: "100px 0 0 0" }}
-        horizontal
-        justify="space-between"
-        align="center"
-      >
-        <Menu mode="horizontal" items={items} selectedKeys={[selectedKey]} />
-
-        <ThemeSwitch variant="filled" onThemeSwitch={setThemeMode} themeMode={themeMode} />
-      </Flexbox>
+        mode="horizontal"
+        items={items}
+        selectedKeys={[selectedKey]}
+      />
 
       {children}
       <Divider style={{ margin: "78px 0 48px 0" }} />

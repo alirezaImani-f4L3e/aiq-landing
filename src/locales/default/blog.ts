@@ -1,0 +1,11 @@
+export default {
+  pageLayout: {
+    menu: {
+      allPosts: "همه پست ها",
+      product: "محصول",
+      community: "اجتماع",
+      engineer: "مهندسی",
+      company: "اخبار شرکت",
+    },
+  },
+};

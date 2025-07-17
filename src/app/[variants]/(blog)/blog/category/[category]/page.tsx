@@ -1,7 +1,7 @@
 import Blog from "@/components/pages/blog";
-import Template from "../blogLayout/layout";
+import Template from "../../../blogLayout/layout";
 
-const BlogPage = () => {
+const CommunityPage = () => {
   return (
     <Template>
       <Blog />
@@ -9,4 +9,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default CommunityPage;

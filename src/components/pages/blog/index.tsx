@@ -1,11 +1,11 @@
 "use client";
 
 import { Flexbox } from "react-layout-kit";
-import BlogBox from "../blogBox";
+import BlogBox from "./blogBox";
 import { Grid, Menu } from "@lobehub/ui";
-import PostBox from "../postBox";
+import PostBox from "./postBox";
 import { createStyles } from "antd-style";
-import Explor from "../../features/explor";
+import Explor from "../features/explor";
 import { Divider, Typography } from "antd";
 import Link from "next/link";
 

@@ -210,7 +210,7 @@ const BlogBox: React.FC<BlogBoxPropsTypes> = ({ title }) => {
                   justify="space-between"
                   align="center"
                 >
-                  <Flexbox>
+                  <Flexbox horizontal>
                     <Text style={{ color: "#6F6F6F", fontSize: "12px" }}>
                       Community .
                     </Text>{" "}
@@ -219,7 +219,7 @@ const BlogBox: React.FC<BlogBoxPropsTypes> = ({ title }) => {
                     </Text>
                   </Flexbox>
 
-                  <Flexbox className="" horizontal gap={16} align="center">
+                  <Flexbox horizontal gap={16} align="center">
                     <Text className={styles.openAiAvatarTitle}>TC</Text>
                     <Avatar.Group
                       size={24}
@@ -245,7 +245,7 @@ const BlogBox: React.FC<BlogBoxPropsTypes> = ({ title }) => {
                 </Text>
 
                 <Flexbox horizontal justify="space-between" align="center">
-                  <Flexbox>
+                  <Flexbox horizontal>
                     <Text style={{ color: "#6F6F6F", fontSize: "12px" }}>
                       Community .
                     </Text>{" "}
@@ -288,7 +288,7 @@ const BlogBox: React.FC<BlogBoxPropsTypes> = ({ title }) => {
               </Text>
 
               <Flexbox horizontal justify="space-between" align="center">
-               <Flexbox>
+               <Flexbox horizontal>
                     <Text style={{ color: "#6F6F6F", fontSize: "12px" }}>
                       Community .
                     </Text>{" "}

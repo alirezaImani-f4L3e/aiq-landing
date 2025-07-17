@@ -88,14 +88,14 @@ const FeatureText: React.FC = () => {
           style={{ borderRadius: "10px" }}
           type="primary"
         >
-          {t("featurText.getStart")}
+          {t("featureText.getStart")}
         </Button>
         <Button
           className={styles.btns}
           style={{ borderRadius: "10px" }}
           icon={<Book />}
         >
-         {t("featurText.allFeatures")}
+         {t("featureText.allFeatures")}
         </Button>
       </Flexbox>
     </Flexbox>
