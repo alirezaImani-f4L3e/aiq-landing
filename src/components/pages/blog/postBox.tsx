@@ -4,6 +4,7 @@ import { Text } from "@lobehub/ui";
 import { createStyles } from "antd-style";
 import { Avatar, type AvatarGroupProps } from "@lobehub/ui";
 import { Typography } from "antd";
+import Link from "next/link";
 
 const useSyles = createStyles(({ css }) => ({
   tagName: css`
@@ -51,24 +52,32 @@ const PostBox = () => {
     }
   );
 
-  const { Title} = Typography;
+  const { Title } = Typography;
 
   return (
     <Flexbox horizontal={false}>
-      <Title level={5} className={styles.tagName}>مهندسی</Title>
-      <Title level={3} className={styles.title}>
-        ادغام OpenAI Responses API و تبدیل عامل‌ها
-      </Title>
-      <Text className={styles.content} ellipsis={{ rows: 2 }}>
-        اگر Chat Completions API امکان ساخت «چت‌بات هوشمند» قدرتمند را فراهم
-        کرد، Responses API دروازه‌ای به سوی «هوش مصنوعی عامل‌محور» گشوده است.
-        این مقاله به صورت نظام‌مند به بررسی این موضوع می‌پردازد که چگونه
-      </Text>
+      <Link href={"/blog/1"}>
+        <Title
+          level={5}
+          className={styles.tagName}
+          style={{ marginBottom: "-20px" }}
+        >
+          مهندسی
+        </Title>
+        <Title level={3} className={styles.title}>
+          ادغام OpenAI Responses API و تبدیل عامل‌ها
+        </Title>
+        <Text className={styles.content} ellipsis={{ rows: 2 }}>
+          اگر Chat Completions API امکان ساخت «چت‌بات هوشمند» قدرتمند را فراهم
+          کرد، Responses API دروازه‌ای به سوی «هوش مصنوعی عامل‌محور» گشوده است.
+          این مقاله به صورت نظام‌مند به بررسی این موضوع می‌پردازد که چگونه
+        </Text>
 
-      <Flexbox horizontal align="center" justify="start" gap={16}>
-        <Text className={styles.datePaper}>Jun 19, 2025</Text>
-        <Avatar.Group size={24} items={items} onClick={console.log} />
-      </Flexbox>
+        <Flexbox horizontal align="center" justify="start" gap={16}>
+          <Text className={styles.datePaper}>Jun 19, 2025</Text>
+          <Avatar.Group size={24} items={items} onClick={console.log} />
+        </Flexbox>
+      </Link>
     </Flexbox>
   );
 };

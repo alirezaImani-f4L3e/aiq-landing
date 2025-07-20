@@ -8,11 +8,14 @@ import { Center, Flexbox } from "react-layout-kit";
 
 const useStyle = createStyles(({ css, responsive }) => ({
   wrapper: css`
-    padding: 40px 0;
+    width: 100%;
+    padding: 40px 20px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     gap: 16px;
     align-items: center;
+
     ${responsive.mobile} {
       display: flex;
       flex-direction: column;
@@ -20,16 +23,21 @@ const useStyle = createStyles(({ css, responsive }) => ({
   `,
   title: css`
     font-size: 32px;
-    text-align: center;
-    padding: 0 16px;
+    text-align: start;
+    padding: 0 32px 0 0;
     font-weight: bold;
+    display:flex;
+    
     ${responsive.mobile} {
+      display:flex;
+      flex-direction:column;
       font-size: 26px;
+      text-align: center;
     }
   `,
   animationText: css`
     font-size: 32px;
-    text-align: center;
+    text-align: start;
     padding: 0 16px;
     font-weight: bold;
     background-image: linear-gradient(
@@ -49,8 +57,10 @@ const useStyle = createStyles(({ css, responsive }) => ({
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    
     ${responsive.mobile} {
       font-size: 26px;
+      text-align: center;
     }
   `,
   content: css`

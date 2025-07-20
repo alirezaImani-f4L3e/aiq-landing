@@ -86,7 +86,7 @@ const thirdPartner: PartnerItem[] = [
 ];
 
 const Features = () => {
-   const { t } = useTranslation("features");
+  const { t } = useTranslation("features");
 
   return (
     <Flexbox
@@ -106,27 +106,20 @@ const Features = () => {
       <Divider style={{ margin: "48px 0" }} />
       <Partner
         items={firstPartner}
-        // title="همراه هوشمند شما"
-        // content="هر زمان و هر مکان، با رابطی کاربرپسند و همراهان هوشمند، همصحبتهای
-        // دیجیتال خود را بسازید و تغییر دهید."
         title={t("partner.one.title")}
         content={t("partner.one.content")}
         priority="first"
-        />
+      />
       <Divider style={{ margin: "48px 0" }} />
       <Partner
         items={secondPartner}
-        // title="حسی"
-        // content="با برترین مدل‌های زبانی جهانی ارتباط برقرار کنید تا دستیار هوشمندتان را با افزونه‌ها و پایگاه‌های دانش ارتقا دهید و هر تعامل را پربارتر سازید."
         title={t("partner.two.title")}
         content={t("partner.two.content")}
         priority="second"
-        />
+      />
       <Divider style={{ margin: "48px 0" }} />
       <Partner
         items={thirdPartner}
-        // title="تکامل"
-        // content="به مدل‌های زبانی پیشرفته جهانی متصل شوید تا دستیار هوشمند خود را با افزونه‌ها و پایگاه‌های دانش ارتقا دهید و هر تعامل را غنی‌تر سازید."
         title={t("partner.three.title")}
         content={t("partner.three.content")}
         priority="third"
