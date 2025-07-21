@@ -9,6 +9,7 @@ import Explor from "../../features/explor";
 import PostedBy from "./postedBy";
 import ShareTo from "./shareTo";
 import RelatedPost from "./relatedPost";
+import { MenuItems } from "./menuItem";
 
 const useStyles = createStyles(({ css, responsive }) => ({
   category: css`
@@ -85,6 +86,9 @@ const useStyles = createStyles(({ css, responsive }) => ({
     heigth: 1px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     margin: 40px 0;
+    box-shadow: 0px 48px 48px 1px rgba(255, 255, 255, 0.53);
+    -webkit-box-shadow: 0px 48px 48px 1px rgba(255, 255, 255, 0.53);
+    -moz-box-shadow: 0px 48px 48px 1px rgba(255, 255, 255, 0.53);
   `,
 }));
 
@@ -172,6 +176,8 @@ const BlogPost = () => {
 
           <RelatedPost />
           <RelatedPost />
+
+          <MenuItems />
         </Flexbox>
         {/* End Right Side */}
         <Flexbox className={styles.mainLeft}>

@@ -10,7 +10,7 @@ const useSyles = createStyles(({ css }) => ({
   tagName: css`
     font-size: 12px;
     font-weight: bold;
-    color: #6f6f6f;
+    
   `,
   title: css`
     font-size: 20px;
@@ -60,7 +60,7 @@ const PostBox = () => {
         <Title
           level={5}
           className={styles.tagName}
-          style={{ marginBottom: "-20px" }}
+          style={{ marginBottom: "-20px",color: "#6f6f6f" }}
         >
           مهندسی
         </Title>
