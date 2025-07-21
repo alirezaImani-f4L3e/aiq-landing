@@ -3,7 +3,7 @@ import { Flexbox } from "react-layout-kit";
 import Box from "./box";
 import { PartnerItem } from "..";
 import { Grid } from "@lobehub/ui";
-import { Typography } from 'antd';
+import { Typography } from "antd";
 
 const useSyles = createStyles(({ css, responsive }) => ({
   wrapper: css`
@@ -13,10 +13,11 @@ const useSyles = createStyles(({ css, responsive }) => ({
     justify-content: center;
     align-items: center;
 
-    ${responsive.mobile} {
+    ${responsive.tablet} {
       padding: 0 24px;
     }
-    ${responsive.tablet} {
+
+    ${responsive.mobile} {
       padding: 0 24px;
     }
   `,
@@ -79,6 +80,7 @@ const useSyles = createStyles(({ css, responsive }) => ({
     opacity: 0.6;
 
     ${responsive.mobile} {
+      width: 95%;
       font-size: 18px;
     }
   `,
@@ -97,11 +99,12 @@ const Partner: React.FC<PartnerPropsTypes> = ({
   priority,
 }) => {
   const { styles } = useSyles();
-const { Title } = Typography;
+  const { Title } = Typography;
 
   return (
     <Flexbox className={styles.wrapper}>
-      <Title level={2}
+      <Title
+        level={2}
         className={
           priority === "first"
             ? styles.titleFirst
@@ -109,10 +112,17 @@ const { Title } = Typography;
             ? styles.titleSecond
             : styles.titleThird
         }
+        style={{marginBottom:"0px"}}
       >
         {title}
       </Title>
-      <Title level={3} style={{marginBottom:"96px"}} className={styles.content}>{content}</Title>
+      <Title
+        level={3}
+        style={{ marginBottom: "96px" }}
+        className={styles.content}
+      >
+        {content}
+      </Title>
 
       <Grid width={"100%"}>
         {items?.map((item) => (

@@ -16,7 +16,7 @@ const useStyles = createStyles(({ css, responsive }) => ({
   `,
   title: css`
     font-size: 24px;
-    margin-bottom: 12px;
+
     ${responsive.mobile} {
       font-size: 18px;
     }
@@ -33,9 +33,11 @@ const useStyles = createStyles(({ css, responsive }) => ({
 
     ${responsive.mobile} {
       font-size: 32px;
+      padding: 0 16px;
     }
     ${responsive.tablet} {
       font-size: 32px;
+      padding: 0 16px;
     }
   `,
   paragh: css`
@@ -47,11 +49,11 @@ const useStyles = createStyles(({ css, responsive }) => ({
     color: #999999;
 
     ${responsive.mobile} {
-      padding: 0px 32px;
+      padding: 0px 16px;
     }
 
     ${responsive.tablet} {
-      padding: 0px 32px;
+      padding: 0px 16px;
     }
   `,
   btns: css`
@@ -67,10 +69,14 @@ const FeatureText: React.FC = () => {
 
   return (
     <Flexbox className={styles.wrapper}>
-      <Title level={3} className={styles.title}>
+      <Title
+        level={3}
+        className={styles.title}
+        style={{ marginBottom: "24px" }}
+      >
         {t("featureText.title")}
       </Title>
-      <Flexbox className={styles.subTitle}>
+      <Flexbox className={styles.subTitle} style={{ marginBottom: "44px" }}>
         <Text style={{ textAlign: "center" }}>
           {t("featureText.subTitle1")}
         </Text>
@@ -78,7 +84,7 @@ const FeatureText: React.FC = () => {
           {t("featureText.subTitle2")}
         </Text>
       </Flexbox>
-      <Paragraph className={styles.paragh}>
+      <Paragraph className={styles.paragh} style={{ marginBottom: "44px" }}>
         {t("featureText.content")}
       </Paragraph>
 
@@ -95,7 +101,7 @@ const FeatureText: React.FC = () => {
           style={{ borderRadius: "10px" }}
           icon={<Book />}
         >
-         {t("featureText.allFeatures")}
+          {t("featureText.allFeatures")}
         </Button>
       </Flexbox>
     </Flexbox>

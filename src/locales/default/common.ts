@@ -3,6 +3,7 @@ export default {
     header: {
         tabs: {
             features: "ویژگی ها",
+            blog: "بلاگ",
             pricing: "قیمت ها"
         }
     },

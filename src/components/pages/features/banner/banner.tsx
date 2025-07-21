@@ -5,13 +5,15 @@ import { Center } from "react-layout-kit";
 const useStyles = createStyles(({ css, responsive }) => ({
   banner: css`
     width: 100vw;
-    height: 100vh;
-    padding-top: 80px;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 120px;
+
     ${responsive.mobile} {
-      height: 100vh;
+      padding-top: 100px;
+      height: 65vh;
     }
   `,
 }));
@@ -26,7 +28,7 @@ const Banner: React.FC<ImageProps> = () => {
           alt="LobeChat Features"
           preview={false}
           variant={"borderless"}
-          style={{ width: "1024px", height: "430px" }}
+          style={{ width: "1024px", height: "100%" }}
         />
       </Center>
     </Center>

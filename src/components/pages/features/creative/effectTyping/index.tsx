@@ -39,7 +39,7 @@ const useStyles = createStyles(({ css, responsive }) => ({
   `,
   pargh: css`
     font-size: 14px;
-    text-align: end;
+    text-align: start;
     overflow: hidden;
     white-space: wrap;
     width: fit-content;
@@ -58,7 +58,7 @@ const EffectTyping: React.FC<EffectPropsTypes> = ({ speed, text }) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  const fullText = `${text}.I will create it for you 👉`;
+  const fullText = `${text}\nمن آن را برای شما می‌سازم 👉`;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -128,7 +128,7 @@ const EffectTyping: React.FC<EffectPropsTypes> = ({ speed, text }) => {
           decoding="async"
           data-nimg="1"
           preview={false}
-          src="https://registry.npmmirror.com/@lobehub/fluent-emoji-3d/latest/files/assets/1f9d1-200d-1f3a8.webp"
+          src="/images/features/painter.webp"
         />
       </Flexbox>
     </Center>

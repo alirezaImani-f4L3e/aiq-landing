@@ -1,7 +1,7 @@
 import { usePathname } from "next/navigation";
 
 
-export type PageKey = "features" | "pricing";
+export type PageKey = "features" | "pricing" | "blog";
 
 const useActivePage = () => {
 
