@@ -84,6 +84,7 @@ const useStyles = createStyles(({ css, token, responsive }) => ({
   gitHubButton: css`
     background-color: rgb(13, 13, 13);
     -webkit-box-align: center;
+    display: flex;
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
@@ -177,7 +178,7 @@ const Content = memo(() => {
                 <svg
                   data-date-format="longDate"
                   height="50"
-                  viewBox="0 0 250 52"
+                  viewBox="0 0 170 52"
                   width="250"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -191,7 +192,7 @@ const Content = memo(() => {
                   ></rect>
                   <foreignObject height="17" width="198" x="6" y="10">
                     <div style={{ color: "white", fontSize: "9px" }}>
-                      GITHUB TRENDING
+                      محبوب‌های گیت‌هاب
                     </div>
                   </foreignObject>
                   <svg
@@ -208,15 +209,15 @@ const Content = memo(() => {
                       fill="#ffffff"
                     ></path>
                   </svg>
-                  <foreignObject height="35" width="230" x="64" y="24">
+                  <foreignObject height="35" width="190" x="64" y="24">
                     <div
                       style={{
                         color: "white",
                         fontSize: "14px",
-                        marginRight: "70px",
+                        marginRight: "100px",
                       }}
                     >
-                      #1Repository Of The Day
+                      پروژهٔ برتر روز #
                     </div>
                   </foreignObject>
                   <foreignObject height="36" width="141" x="-36" y="9">
